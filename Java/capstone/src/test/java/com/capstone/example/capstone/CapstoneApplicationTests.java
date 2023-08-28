@@ -19,7 +19,7 @@ class CapstoneApplicationTests {
 
 	@Test
 	public void AddUser(){
-		User jimmy = new User("Paul", 3, 15, 2, "WeeJimmy", "password");
+		User jimmy = new User("Jimmy", 3, 15, 2, "WeeJimmy", "password");
 		userRepository.save(jimmy);
 	}
 }
