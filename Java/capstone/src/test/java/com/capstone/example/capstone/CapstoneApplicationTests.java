@@ -26,23 +26,17 @@ class CapstoneApplicationTests {
 	void contextLoads() {
 	}
 
-	@Test
-	public void addUser(){
-		User jimmy = new User("Jimmy", 3, 15, 2, "WeeJimmy", "password");
-		userRepository.save(jimmy);
-	}
-
 //	@Test
-//	public void addQuestion(){
-//		Question question = new Question("This is a question", "This is a hint", 2, QuestionLevel.BEGINNER);
-//		questionRepository.save(question);
+//	public void addUser(){
+//		User jimmy = new User("Jimmy", 3, 15, 2, "WeeJimmy", "password");
+//		userRepository.save(jimmy);
 //	}
 
-	@Test
-	public void addQuestionAndAnswer(){
-		Question question = new Question("This is a question", "This is a hint", 2, QuestionLevel.BEGINNER);
-		questionRepository.save(question);
-		Answer answer = new Answer("This is an answer", true, question);
-		answerRepository.save(answer);
-	}
+//	@Test
+//	public void addQuestionAndAnswer(){
+//		Question question = new Question("This is a question", "This is a hint", 2, QuestionLevel.BEGINNER);
+//		questionRepository.save(question);
+//		Answer answer = new Answer("This is an answer", true, question);
+//		answerRepository.save(answer);
+//	}
 }

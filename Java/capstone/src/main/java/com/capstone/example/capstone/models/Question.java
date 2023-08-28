@@ -19,13 +19,13 @@ public class Question {
     @JsonIgnoreProperties({"question"})
     @OneToMany(mappedBy = "question")
     private List<Answer>answers;
-    private QuestionLevel questionLevel;
+    private int questionLevel;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    public Question(String questionText, String hintText, int dayID, QuestionLevel questionLevel) {
+    public Question(String questionText, String hintText, int dayID, int questionLevel) {
         this.questionText = questionText;
         this.hintText = hintText;
         this.dayID = dayID;
@@ -67,11 +67,11 @@ public class Question {
         this.answers = answers;
     }
 
-    public QuestionLevel getQuestionLevel() {
+    public int getQuestionLevel() {
         return questionLevel;
     }
 
-    public void setQuestionLevel(QuestionLevel questionLevel) {
+    public void setQuestionLevel(int questionLevel) {
         this.questionLevel = questionLevel;
     }
 

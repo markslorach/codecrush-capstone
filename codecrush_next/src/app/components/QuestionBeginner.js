@@ -2,7 +2,7 @@ import React from "react";
 import Answer from "./Answer";
 import Hint from "./Hint";
 
-const QuestionAdvanced = ({question, answers}) => {
+const QuestionBeginner = ({question, answers}) => {
 
   const answerList = question.answers
  
@@ -29,4 +29,4 @@ const QuestionAdvanced = ({question, answers}) => {
   );
 }
 
-export default QuestionAdvanced;
+export default QuestionBeginner;
