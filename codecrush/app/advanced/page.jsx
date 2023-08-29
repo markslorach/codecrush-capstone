@@ -1,13 +1,11 @@
 import React from 'react'
+import AdvancedQuestion from './AdvancedQuestion'
 
 export default function Advanced() {
   return (
     <main>
         <h2>Advanced Question</h2>
-        <p>This is a question?</p>
-        <p>This is an answer choice</p>
-        <p>This is an answer choice</p>
-        <p>This is an answer choice</p>
+        <AdvancedQuestion/>
         <button>Check Answer</button>
     </main>
   )

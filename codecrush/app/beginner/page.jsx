@@ -1,14 +1,15 @@
 import React from 'react'
+import BeginnerQuestion from './BeginnerQuestion'
 
 export default function Beginner() {
+
   return (
     <main>
+  
         <h2>Beginner Question</h2>
-        <p>This is a question?</p>
-        <p>This is an answer choice</p>
-        <p>This is an answer choice</p>
-        <p>This is an answer choice</p>
+        <BeginnerQuestion/>
         <button>Check Answer</button>
+
     </main>
   )
 }

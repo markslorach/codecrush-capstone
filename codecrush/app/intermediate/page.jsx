@@ -1,13 +1,11 @@
 import React from 'react'
+import IntermediateQuestion from './IntermediateQuestion'
 
 export default function Intermediate() {
   return (
     <main>
         <h2>Intermediate Question</h2>
-        <p>This is a question?</p>
-        <p>This is an answer choice</p>
-        <p>This is an answer choice</p>
-        <p>This is an answer choice</p>
+        <IntermediateQuestion/>
         <button>Check Answer</button>
     </main>
   )

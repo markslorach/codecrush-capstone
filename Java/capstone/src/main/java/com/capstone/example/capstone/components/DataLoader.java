@@ -41,11 +41,11 @@ public class DataLoader implements ApplicationRunner {
         User Ian = new User("Ian", 5, 25, 4, "ian_m", "password3");
         userRepository.save(Ian);
 
-        Question questionBeginner1 = new Question("This is beginner question day 1", "This is a hint", 1, 1);
+        Question questionBeginner1 = new Question("This is beginner question day 1", "This is a hint", 2, 1);
         questionRepository.save(questionBeginner1);
-        Question questionIntermediate1 = new Question("This is intermediate question day 1", "This is a hint", 1, 2);
+        Question questionIntermediate1 = new Question("This is intermediate question day 1", "This is a hint", 2, 2);
         questionRepository.save(questionIntermediate1);
-        Question questionAdvanced1 = new Question("This is advanced question day 1", "This is a hint", 1, 3);
+        Question questionAdvanced1 = new Question("This is advanced question day 1", "This is a hint", 2, 3);
         questionRepository.save(questionAdvanced1);
 
         Answer answerBeginner1 = new Answer("This is beginner answer1 which is correct day 1 ", true, questionBeginner1);
