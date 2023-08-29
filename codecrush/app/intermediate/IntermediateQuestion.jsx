@@ -17,7 +17,7 @@ export default async function IntermediateQuestion(){
     const questions = await getQuestions()
     const intermediateQuestion = questions.filter((question) => {
         return(
-        question.questionLevel === 2 && question.dayID === (day -1)
+        question.questionLevel === 2 && question.dayID === (day)
         )
     })
 

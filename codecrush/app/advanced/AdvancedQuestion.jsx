@@ -17,7 +17,7 @@ export default async function AdvancedQuestion(){
     const questions = await getQuestions()
     const advancedQuestion = questions.filter((question) => {
         return(
-        question.questionLevel === 3 && question.dayID === 1
+        question.questionLevel === 3 && question.dayID === (day)
         )
     })
 
