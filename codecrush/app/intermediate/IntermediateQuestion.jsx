@@ -11,10 +11,13 @@ async function getAnswers(){
 }
 
 export default async function IntermediateQuestion(){
+    const now = new Date();
+    const day = now.getDay();
+    console.log(day);
     const questions = await getQuestions()
     const intermediateQuestion = questions.filter((question) => {
         return(
-        question.questionLevel === 2 && question.dayID === 1
+        question.questionLevel === 2 && question.dayID === (day -1)
         )
     })
 

@@ -41,11 +41,11 @@ public class DataLoader implements ApplicationRunner {
         User Ian = new User("Ian", 5, 25, 4, "ian_m", "password3");
         userRepository.save(Ian);
 
-        Question questionBeginner1 = new Question("This is beginner question day 1", "This is a hint", 2, 1);
+        Question questionBeginner1 = new Question("This is beginner question day 1", "This is a hint", 1, 1);
         questionRepository.save(questionBeginner1);
-        Question questionIntermediate1 = new Question("This is intermediate question day 1", "This is a hint", 2, 2);
+        Question questionIntermediate1 = new Question("This is intermediate question day 1", "This is a hint", 1, 2);
         questionRepository.save(questionIntermediate1);
-        Question questionAdvanced1 = new Question("This is advanced question day 1", "This is a hint", 2, 3);
+        Question questionAdvanced1 = new Question("This is advanced question day 1", "This is a hint", 1, 3);
         questionRepository.save(questionAdvanced1);
 
         Answer answerBeginner1 = new Answer("This is beginner answer1 which is correct day 1 ", true, questionBeginner1);
@@ -68,6 +68,21 @@ public class DataLoader implements ApplicationRunner {
         answerRepository.save(answerAdvanced2);
         Answer answerAdvanced3 = new Answer("This is advanced answer3 which is correct day 1 ", false, questionAdvanced1);
         answerRepository.save(answerAdvanced3);
+
+
+
+        Question questionBeginner0 = new Question("Test", "This is a hint", 0, 1);
+        questionRepository.save(questionBeginner0);
+        Question questionBeginner2 = new Question("This is beginner question day 2", "This is a hint", 2, 1);
+        questionRepository.save(questionBeginner2);
+        Question questionBeginner3 = new Question("This is beginner question day 3", "This is a hint", 3, 1);
+        questionRepository.save(questionBeginner3);
+        Question questionBeginner4 = new Question("This is beginner question day 4", "This is a hint", 4, 1);
+        questionRepository.save(questionBeginner4);
+        Question questionBeginner5 = new Question("This is beginner question day 5", "This is a hint", 5, 1);
+        questionRepository.save(questionBeginner5);
+        Question questionBeginner6 = new Question("This is beginner question day 6", "This is a hint", 6, 1);
+        questionRepository.save(questionBeginner6);
     }
 
 }
