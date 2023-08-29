@@ -1,16 +1,19 @@
 async function getQuestions(){
-    const res = await fetch('http://localhost:8080/api/questions')
+    const res = await fetch('http://localhost:8081/api/questions')
     
     return res.json()
 }
 
 async function getAnswers(){
-    const res = await fetch('http://localhost:8080/api/answers')
+    const res = await fetch('http://localhost:8081/api/answers')
 
     return res.json()
 }
 
 export default async function AdvancedQuestion(){
+    const now = new Date();
+    const day = now.getDay();
+    console.log(day);
     const questions = await getQuestions()
     const advancedQuestion = questions.filter((question) => {
         return(

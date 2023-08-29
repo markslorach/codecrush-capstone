@@ -1,14 +1,14 @@
 
 
 async function getQuestions(){
-    const res = await fetch('http://localhost:8080/api/questions')
+    const res = await fetch('http://localhost:8081/api/questions')
     
     
     return res.json()
 }
 
 async function getAnswers(){
-    const res = await fetch('http://localhost:8080/api/answers')
+    const res = await fetch('http://localhost:8081/api/answers')
     
 
     return res.json()
@@ -21,14 +21,12 @@ export default async function BeginnerQuestion(){
     const questions = await getQuestions()
     const beginnerQuestion = questions.filter((question) => {
         return(
-        question.questionLevel === 1 && question.dayID === (day -1)
+        question.questionLevel === 1 && question.dayID === (day)
         )
 
     })
     
     console.log(day);
-
-
 
     const answers = await getAnswers()
     const beginnerAnswers = answers.filter((answer) => {
