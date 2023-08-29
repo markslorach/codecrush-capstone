@@ -1,10 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Logo from "../components/Logo";
-import Login from "../components/Login";
-import Home from "../components/Home";
-import QuestionBeginner from "../components/QuestionBeginner";
-import QuestionIntermediate from "../components/QuestionIntermediate";
-import QuestionAdvanced from "../components/QuestionAdvanced";
 import Request from "../helpers/Request";
 
 const MainContainer = () => {
@@ -26,9 +20,7 @@ Promise.all([questionPromise, answersPromise]).then((data) => {
 };
 
 return (
-<>
-<p>This is an App!! </p>
-</>
+<p>hello</p>
 );
 };
 
