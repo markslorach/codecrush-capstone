@@ -24,7 +24,7 @@ useEffect(() => {
         if (currentUser !== null) {
         console.log(currentUser)
         const createdUser = createNewUser(currentUser)
-      addUser(createdUser)
+    addUser(createdUser)
     setUser(currentUser)
         }
 
@@ -39,7 +39,7 @@ const createNewUser = (user) => {
         "streak":0, 
         "score": 0,
         "username": user.displayName,
-        "email": user.email 
+        "uid": user.uid 
     
     };
     
@@ -47,11 +47,18 @@ const createNewUser = (user) => {
 return newUser
 }
 
+const checkUser = (newUser) => {
+    const request = new Request();
+    if (request.get('http://localhost:8082/api/users/{newUser.uid}') > 0){return true};
+
+  
+}
 
 const addUser = (newUser) => {
+    if (checkUser(newUser) === false){
 const request = new Request();
 request.post('http://localhost:8082/api/users', newUser) 
-
+    }
 
 
 }
