@@ -4,7 +4,7 @@ import Link from 'next/link'
 export const NavBar = () => {
   return (
     <nav className='p-2 bg-red-600'>
-          <h2>NavBar</h2>
+          <h2><b>NavBar</b></h2>
           <Link href="/">Logo Page</Link>
           <Link href="/login">Login Page</Link>
           <Link href="/dashboard">Dashboard</Link>

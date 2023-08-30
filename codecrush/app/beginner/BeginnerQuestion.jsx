@@ -1,34 +1,45 @@
+import React, { useState, useEffect } from 'react';
+
 async function getQuestions() {
   const res = await fetch("http://localhost:8082/api/questions");
-
   return res.json();
 }
 
 async function getAnswers() {
   const res = await fetch("http://localhost:8082/api/answers");
-
   return res.json();
 }
 
-export default async function BeginnerQuestion() {
-  const now = new Date();
-  const day = now.getDay();
-  console.log(day);
-  const questions = await getQuestions();
-  const beginnerQuestion = questions.filter((question) => {
-    return question.questionLevel === 1 && question.dayID === day
-  });
+export default function BeginnerQuestion() {
+  const [beginnerQuestions, setBeginnerQuestions] = useState([]);
+  const [beginnerAnswers, setBeginnerAnswers] = useState([]);
 
-  console.log(day);
+  useEffect(() => {
+    async function getData() {
+      const now = new Date();
+      const day = now.getDay();
+    //   console.log(day)
+      const questions = await getQuestions();
+      const beginnerQuestions = questions.filter((question) => {
+        return question.questionLevel === 1 && question.dayID === day;
+      });
 
-  const answers = await getAnswers();
-  const beginnerAnswers = answers.filter((answer) => {
-    return answer.question.id === beginnerQuestion[0].id;
-  });
+      setBeginnerQuestions(beginnerQuestions);
+
+      const answers = await getAnswers();
+      const beginnerAnswers = answers.filter((answer) => {
+        return beginnerQuestions.some(beginnerQuestion => beginnerQuestion.id === answer.question.id);
+      });
+
+      setBeginnerAnswers(beginnerAnswers);
+    }
+
+    getData();
+  }, []);
 
   return (
     <>
-      {beginnerQuestion.map((question) => (
+      {beginnerQuestions.map((question) => (
         <div key={question.id}>
           <h2>{question.questionText}</h2>
         </div>
