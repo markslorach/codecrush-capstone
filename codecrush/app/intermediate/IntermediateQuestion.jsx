@@ -1,5 +1,3 @@
-// IntermediateQuestion.jsx
-
 import React, { useState, useEffect } from 'react';
 
 async function getQuestions() {

@@ -6,9 +6,6 @@ const [questions, setQuestions] = useState([]);
 const [answers, setAnswers] = useState([]);
 
 useEffect(() => {
-getData();
-}, []);
-
 const getData = () => {
 const request = new Request();
 const questionPromise = request.get("/api/questions");
@@ -18,6 +15,9 @@ Promise.all([questionPromise, answersPromise]).then((data) => {
     setAnswers(data[1]);
 });
 };
+
+getData();
+}, []);
 
 return (
 <p>hello</p>
