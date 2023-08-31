@@ -14,6 +14,7 @@ export default function BeginnerQuestion() {
   const [beginnerQuestions, setBeginnerQuestions] = useState([]);
   const [beginnerAnswers, setBeginnerAnswers] = useState([]);
   const [correct, setCorrect] = useState(null);
+  const [result, setResult] = useState("");
 
   useEffect(() => {
     async function getData() {
@@ -47,6 +48,22 @@ export default function BeginnerQuestion() {
     }
   }
 
+  const handleCheckClick = () => {
+    if(correct === true){
+      return(
+        setResult("You are correct!")
+      )
+    }else if(correct === false){
+      return(
+        setResult("You are wrong!")
+      )
+    }else{
+      return(
+        setResult("Please select an answer")
+      )
+    }
+  }
+
 
   return (
     <>
@@ -61,6 +78,8 @@ export default function BeginnerQuestion() {
           <button value={answer.correct} key={answer.id} onClick={handleAnswerClick}>{answer.answerText}</button>
         </div>
       ))}
+      <button onClick={handleCheckClick}>Check Answer</button>
+      <h2>{result}</h2>
     </>
   );
 }

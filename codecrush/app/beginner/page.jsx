@@ -9,7 +9,7 @@ export default function Beginner() {
   
         <h2>Beginner Question</h2>
         <BeginnerQuestion/>
-        <button>Check Answer</button>
+
 
     </main>
   )
