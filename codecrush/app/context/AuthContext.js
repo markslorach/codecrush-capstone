@@ -5,63 +5,62 @@ import Request from "../helpers/Request";
 
 
 const AuthContext = createContext();
+
 export const AuthContextProvider = ({children}) => {
 const [user, setUser] = useState(null)
-console.log(user);
-
-
 
 const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider);
-    
+    signInWithPopup(auth, provider);   
 }
+
 const logOut = () => {
     signOut(auth);
 }
+
 useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth,(currentUser) => {
         if (currentUser !== null) {
         console.log(currentUser)
         const createdUser = createNewUser(currentUser)
     addUser(createdUser)
-    setUser(currentUser)
-        }
+    }
 
     })
     return () => unsubscribe();
-}, [user]);
+}, []);
 
 const createNewUser = (user) => {
     
-
     const newUser = {
         "streak":0, 
         "score": 0,
         "username": user.displayName,
         "uid": user.uid 
-    
     };
-    
-
 return newUser
 }
 
-const checkUser = (newUser) => {
+const checkUser = async (newUser) => {
     const request = new Request();
-    if (request.get('http://localhost:8082/api/users/{newUser.uid}') > 0){return true};
-
-  
+    const result = await request.get (`http://localhost:8082/api/users/${newUser.uid}`)
+    
+    if (result.length > 0){
+        return true 
+    }
+    return false;
 }
 
 const addUser = (newUser) => {
-    if (checkUser(newUser) === false){
-const request = new Request();
-request.post('http://localhost:8082/api/users', newUser) 
-    }
-
-
+   checkUser(newUser).then((res) => {
+        if (!res){
+            const request = new Request();
+            request.post('http://localhost:8082/api/users', newUser) 
+            .then(() => setUser(newUser))
+            }
+    })
 }
+
 return (
 <AuthContext.Provider value={{user, googleSignIn, logOut}}>{children}</AuthContext.Provider>)
 }

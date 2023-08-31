@@ -16,7 +16,7 @@ public class User {
     private String uid;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+//    @Column(name = "id")
     private Long id;
 
     public User(int streak, int score, String username, String uid) {

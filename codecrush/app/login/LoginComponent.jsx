@@ -17,7 +17,7 @@ export default function LoginComponent() {
  
   return (
     <main>
-      <button onClick={handleSignIn}>Login</button>
+      <button className="bg-red-500" onClick={handleSignIn}>Login</button>
     </main>
   );
 }

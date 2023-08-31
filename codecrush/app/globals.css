@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+nav {
+  @apply w-full flex flex-wrap
+}
+
 nav a {
     @apply pr-2;
   }
