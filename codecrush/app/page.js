@@ -1,7 +1,11 @@
-export default function Home() {
+"use client"
+import React from 'react'
+import LogoComponent from './login/LogoComponent'
+
+export default function Home(){
   return (
-    <main>
-      <p>Logo</p>
-    </main>
+    <LogoComponent/>
   )
 }
+
+
