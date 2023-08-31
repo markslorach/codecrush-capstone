@@ -11,8 +11,9 @@ const [user, setUser] = useState(null)
 
 const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider);   
-}
+    signInWithPopup(auth, provider) 
+    .then(() => window.location.href = '/dashboard')
+} 
 
 const logOut = () => {
     signOut(auth);
@@ -24,6 +25,7 @@ useEffect(() => {
         console.log(currentUser)
         const createdUser = createNewUser(currentUser)
     addUser(createdUser)
+    
     }
 
     })

@@ -1,6 +1,5 @@
 import React from "react";
 import { UserAuth } from "../context/AuthContext";
-import Request from "../helpers/Request";
 
 export default function LoginComponent() {
   const { user, googleSignIn, logOut} = UserAuth();
@@ -12,9 +11,7 @@ export default function LoginComponent() {
       console.log(error);
     }
   };
-  console.log(user);
 
- 
   return (
     <main>
       <button className="bg-red-500" onClick={handleSignIn}>Login</button>
