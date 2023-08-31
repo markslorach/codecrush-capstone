@@ -20,10 +20,14 @@ public class Question {
     @OneToMany(mappedBy = "question")
     private List<Answer>answers;
     private int questionLevel;
+//    @Column(name = "haveAnswered")
+    private ArrayList<String> haveAnswered;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
+
 
     public Question(String questionText, String hintText, int dayID, int questionLevel) {
         this.questionText = questionText;
@@ -31,6 +35,7 @@ public class Question {
         this.dayID = dayID;
         this.questionLevel = questionLevel;
         this.answers = new ArrayList<>();
+        this.haveAnswered = new ArrayList<>();
     }
 
     public Question(){}
@@ -81,5 +86,13 @@ public class Question {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public ArrayList<String> getHaveAnswered() {
+        return haveAnswered;
+    }
+
+    public void setHaveAnswered(ArrayList<String> haveAnswered) {
+        this.haveAnswered = haveAnswered;
     }
 }

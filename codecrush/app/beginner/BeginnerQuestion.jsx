@@ -57,9 +57,7 @@ export default function BeginnerQuestion() {
     }
   };
 
-  const handleCheckClick = () => {
-    setCheckClicked(true);
-    console.log(user[0]);
+  const checkAnswer = () => {
     if (correct === true) {
       const updateUser = {
         streak: user[0].streak + 1,
@@ -90,10 +88,40 @@ export default function BeginnerQuestion() {
       request
         .put(`http://localhost:8082/api/users/${user.uid}`, updateUser)
         .then(() => {
-          return setResult("You are wrong!");
+          
+          return setResult('You are wrong! The correct answer is');
         });
     } else {
       return setResult("Please select an answer");
+    }
+  };
+
+  const logAttempt = () => {
+    const updatedQuestions = [...beginnerQuestions];
+    updatedQuestions[0].haveAnswered.push(user[0].uid);
+    setBeginnerQuestions(updatedQuestions);
+  };
+
+  const updateQuestion = () => {
+    const request = new Request();
+    request.put(
+      `http://localhost:8082/api/questions/${beginnerQuestions[0].id}`,
+      beginnerQuestions[0]
+    );
+  };
+
+  const handleCheckClick = () => {
+    if (
+      user[0].uid &&
+      beginnerQuestions[0].haveAnswered.includes(user[0].uid)
+    ) {
+      console.log("Already Answered");
+    } else {
+      setCheckClicked(true);
+      checkAnswer();
+      logAttempt();
+      updateQuestion();
+      console.log(user[0]);
     }
   };
 
@@ -136,11 +164,11 @@ export default function BeginnerQuestion() {
           Wanna see a hint?
         </div>
         <div className="collapse-content">
-        {beginnerQuestions.map((question) => (
-        <p key={question.id}>
-          <h2>{question.hintText}</h2>
-        </p>
-      ))}
+          {beginnerQuestions.map((question) => (
+            <div key={question.id}>
+              <p>{question.hintText}</p>
+            </div>
+          ))}
         </div>
       </div>
 
