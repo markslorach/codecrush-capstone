@@ -16,6 +16,8 @@ export default function BeginnerQuestion() {
   const [beginnerAnswers, setBeginnerAnswers] = useState([]);
   const [correct, setCorrect] = useState(null);
   const [result, setResult] = useState("");
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [checkClicked, setCheckClicked] = useState(false);
 
   useEffect(() => {
     async function getData() {
@@ -42,8 +44,8 @@ export default function BeginnerQuestion() {
     getData();
   }, []);
 
-  const handleAnswerClick = (event) => {
-    console.log(event);
+  const handleAnswerClick = (event, answer) => {
+    setSelectedAnswer(answer);
     if (event.target.value === "false") {
       setCorrect(false);
     } else {
@@ -52,6 +54,7 @@ export default function BeginnerQuestion() {
   };
 
   const handleCheckClick = () => {
+    setCheckClicked(true);
     if (correct === true) {
       return setResult("You are correct!");
     } else if (correct === false) {
@@ -76,8 +79,15 @@ export default function BeginnerQuestion() {
         <div key={answer.id}>
           <button
             value={answer.correct}
-            key={answer.id}
-            onClick={handleAnswerClick}
+            onClick={(event) => handleAnswerClick(event, answer)}
+            className={`${
+              checkClicked &&
+              (selectedAnswer === answer && correct
+                ? "text-green-500"
+                : selectedAnswer === answer && !correct
+                ? "text-red-500"
+                : "text-black")
+            }`}
           >
             {answer.answerText}
           </button>

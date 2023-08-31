@@ -7,9 +7,10 @@ export default function Dashboard() {
   return (
     <main>
       <h2>Dashboard</h2>
-      <h3 className="flex">
-        Hello, <UserName />
+      <h3 className="flex space-x-2">
+        <span>Hello,</span><UserName />
       </h3>
+
       <h3>Stats.</h3>
       <h3>Today's challenge.</h3>
       <PythonDifficultySelect />
