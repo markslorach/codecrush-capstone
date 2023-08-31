@@ -1,16 +1,12 @@
-"use client"
-import React from 'react'
-import BeginnerQuestion from './BeginnerQuestion'
+"use client";
+import React from "react";
+import BeginnerQuestion from "./BeginnerQuestion";
 
 export default function Beginner() {
-
   return (
     <main>
-  
-        <h2>Beginner Question</h2>
-        <BeginnerQuestion/>
-
-
+      <h2>Beginner Question</h2>
+      <BeginnerQuestion />
     </main>
-  )
+  );
 }

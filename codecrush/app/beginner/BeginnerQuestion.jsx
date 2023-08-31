@@ -83,6 +83,17 @@ export default function BeginnerQuestion() {
           </button>
         </div>
       ))}
+
+      <div className="collapse bg-base-200">
+        <input type="checkbox" />
+        <div className="collapse-title text-xl font-medium cursor-grab">
+          Wanna see a hint?
+        </div>
+        <div className="collapse-content">
+          <p>This is a hint</p>
+        </div>
+      </div>
+
       <button onClick={handleCheckClick}>Check Answer</button>
       <h2>{result}</h2>
     </>

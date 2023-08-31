@@ -13,7 +13,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html data-theme="winter">
       <body className={inter.className}>
       <AuthContextProvider>
       <NavBar/>
@@ -23,3 +23,5 @@ export default function RootLayout({ children }) {
     </html>
   )
 }
+
+

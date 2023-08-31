@@ -1,20 +1,20 @@
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function LogoComponent() {
-    const router = useRouter();
+  const router = useRouter();
 
-    useEffect(() => {
-      const timer = setTimeout(() => {
-        router.push('/login');
-      }, 5000);
-      return () => clearTimeout(timer);
-    }, );
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      router.push("/login");
+    }, 3000);
+    return () => clearTimeout(timer);
+  });
 
-
-return (
-   <p>Logo</p>
-)
+  return (
+    <>
+      <p>Logo</p>
+      <span className="loading loading-spinner text-accent"></span>
+    </>
+  );
 }
-
-
