@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import Link from "next/link";
+import React, { useState, useEffect } from "react";
 
 async function getQuestions() {
   const res = await fetch("http://localhost:8082/api/questions");
@@ -20,7 +21,7 @@ export default function BeginnerQuestion() {
     async function getData() {
       const now = new Date();
       const day = now.getDay();
-    //   console.log(day)
+      //   console.log(day)
       const questions = await getQuestions();
       const beginnerQuestions = questions.filter((question) => {
         return question.questionLevel === 1 && question.dayID === day;
@@ -30,7 +31,9 @@ export default function BeginnerQuestion() {
 
       const answers = await getAnswers();
       const beginnerAnswers = answers.filter((answer) => {
-        return beginnerQuestions.some(beginnerQuestion => beginnerQuestion.id === answer.question.id);
+        return beginnerQuestions.some(
+          (beginnerQuestion) => beginnerQuestion.id === answer.question.id
+        );
       });
 
       setBeginnerAnswers(beginnerAnswers);
@@ -40,33 +43,29 @@ export default function BeginnerQuestion() {
   }, []);
 
   const handleAnswerClick = (event) => {
-    console.log(event)
-    if(event.target.value === "false"){
-      setCorrect(false)
-    }else{
-      setCorrect(true)
+    console.log(event);
+    if (event.target.value === "false") {
+      setCorrect(false);
+    } else {
+      setCorrect(true);
     }
-  }
+  };
 
   const handleCheckClick = () => {
-    if(correct === true){
-      return(
-        setResult("You are correct!")
-      )
-    }else if(correct === false){
-      return(
-        setResult("You are wrong!")
-      )
-    }else{
-      return(
-        setResult("Please select an answer")
-      )
+    if (correct === true) {
+      return setResult("You are correct!");
+    } else if (correct === false) {
+      return setResult("You are wrong!");
+    } else {
+      return setResult("Please select an answer");
     }
-  }
-
+  };
 
   return (
     <>
+      <Link href="/dashboard">
+        <button>Close</button>
+      </Link>
       {beginnerQuestions.map((question) => (
         <div key={question.id}>
           <h2>{question.questionText}</h2>
@@ -74,8 +73,14 @@ export default function BeginnerQuestion() {
       ))}
 
       {beginnerAnswers.map((answer) => (
-        <div key={answer.id} >
-          <button value={answer.correct} key={answer.id} onClick={handleAnswerClick}>{answer.answerText}</button>
+        <div key={answer.id}>
+          <button
+            value={answer.correct}
+            key={answer.id}
+            onClick={handleAnswerClick}
+          >
+            {answer.answerText}
+          </button>
         </div>
       ))}
       <button onClick={handleCheckClick}>Check Answer</button>

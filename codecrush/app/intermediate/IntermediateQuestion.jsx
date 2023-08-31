@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import Link from "next/link";
+import React, { useState, useEffect } from "react";
 
 async function getQuestions() {
   const res = await fetch("http://localhost:8082/api/questions");
@@ -28,7 +29,10 @@ export default function IntermediateQuestion() {
 
       const answers = await getAnswers();
       const intermediateAnswers = answers.filter((answer) => {
-        return intermediateQuestions.some(intermediateQuestion => intermediateQuestion.id === answer.question.id);
+        return intermediateQuestions.some(
+          (intermediateQuestion) =>
+            intermediateQuestion.id === answer.question.id
+        );
       });
 
       setIntermediateAnswers(intermediateAnswers);
@@ -39,6 +43,9 @@ export default function IntermediateQuestion() {
 
   return (
     <>
+      <Link href="/dashboard">
+        <button>Close</button>
+      </Link>
       {intermediateQuestions.map((question) => (
         <div key={question.id}>
           <h2>{question.questionText}</h2>
