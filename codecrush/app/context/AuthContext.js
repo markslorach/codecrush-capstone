@@ -58,6 +58,7 @@ const addUser = (newUser) => {
             request.post('http://localhost:8082/api/users', newUser) 
             .then(() => setUser(newUser))
             }
+        else{setUser(newUser)}
     })
 }
 

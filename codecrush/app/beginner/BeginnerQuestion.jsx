@@ -13,6 +13,7 @@ async function getAnswers() {
 export default function BeginnerQuestion() {
   const [beginnerQuestions, setBeginnerQuestions] = useState([]);
   const [beginnerAnswers, setBeginnerAnswers] = useState([]);
+  const [correct, setCorrect] = useState(null);
 
   useEffect(() => {
     async function getData() {
@@ -37,6 +38,16 @@ export default function BeginnerQuestion() {
     getData();
   }, []);
 
+  const handleAnswerClick = (event) => {
+    console.log(event)
+    if(event.target.value === "false"){
+      setCorrect(false)
+    }else{
+      setCorrect(true)
+    }
+  }
+
+
   return (
     <>
       {beginnerQuestions.map((question) => (
@@ -46,8 +57,8 @@ export default function BeginnerQuestion() {
       ))}
 
       {beginnerAnswers.map((answer) => (
-        <div key={answer.id}>
-          <h2>{answer.answerText}</h2>
+        <div key={answer.id} >
+          <button value={answer.correct} key={answer.id} onClick={handleAnswerClick}>{answer.answerText}</button>
         </div>
       ))}
     </>
