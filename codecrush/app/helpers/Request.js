@@ -3,12 +3,14 @@ class Request {
         const result = await fetch(url);
         return result.json()
     }
+
     delete(url){
         return fetch(url,{
             method: "DELETE",
         header: {'Content-Type':'application/json'}
     })
     }
+
     post(url, payload) {
         return fetch(url, {
             method: "POST",
@@ -16,5 +18,15 @@ class Request {
             body: JSON.stringify(payload)
         })
     }
+
+    put(url, payload) {
+        return fetch(url, {
+            method: "PUT",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(payload)
+        })
+    }
+
+    
     }
 export default Request;

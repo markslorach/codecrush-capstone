@@ -38,7 +38,7 @@ const createNewUser = (user) => {
         "streak":0, 
         "score": 0,
         "username": user.displayName,
-        "uid": user.uid 
+        "uid": user.uid, 
     };
 return newUser
 }
@@ -55,14 +55,23 @@ const checkUser = async (newUser) => {
 
 const addUser = (newUser) => {
    checkUser(newUser).then((res) => {
-        if (!res){
-            const request = new Request();
+    const request = new Request();
+    if (!res){
             request.post('http://localhost:8082/api/users', newUser) 
-            .then(() => setUser(newUser))
+            .then((data) => {
+              setUser(data);
+            })
             }
-        else{setUser(newUser)}
+        else{
+            request.get(`http://localhost:8082/api/users/${newUser.uid}`)
+            .then((data) => {
+              setUser(data)
+            })
+        }
     })
 }
+
+
 
 return (
 <AuthContext.Provider value={{user, googleSignIn, logOut}}>{children}</AuthContext.Provider>)

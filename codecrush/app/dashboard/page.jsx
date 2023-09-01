@@ -8,7 +8,7 @@ export default function Dashboard() {
     <main>
       <h2>Dashboard</h2>
       <h3 className="flex space-x-2">
-        <span>Hello,</span><UserName />
+        <span>Hello,</span><UserName /><span>👋</span>
       </h3>
 
       <h3>Stats.</h3>

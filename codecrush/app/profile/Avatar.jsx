@@ -8,7 +8,7 @@ export const Avatar = () => {
         <div className="avatar placeholder">
             <div className="bg-neutral-focus text-neutral-content rounded-full w-16">
                 <span className="text-xl">
-                    {user && user.username ? user.username.charAt(0) : ''}
+                    {user && user[0].username ? user[0].username.charAt(0) : ''}
                 </span>
             </div>
         </div>

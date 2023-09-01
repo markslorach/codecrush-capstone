@@ -1,5 +1,8 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
+import { UserAuth } from "../context/AuthContext";
+import increaseScore from "../context/AuthContext";
+import Request from "../helpers/Request";
 
 async function getQuestions() {
   const res = await fetch("http://localhost:8082/api/questions");
@@ -19,11 +22,12 @@ export default function BeginnerQuestion() {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [checkClicked, setCheckClicked] = useState(false);
 
+  const { user, setUser } = UserAuth();
+
   useEffect(() => {
     async function getData() {
       const now = new Date();
       const day = now.getDay();
-      //   console.log(day)
       const questions = await getQuestions();
       const beginnerQuestions = questions.filter((question) => {
         return question.questionLevel === 1 && question.dayID === day;
@@ -55,12 +59,37 @@ export default function BeginnerQuestion() {
 
   const handleCheckClick = () => {
     setCheckClicked(true);
+    console.log(user[0]);
     if (correct === true) {
-      return setResult("You are correct!");
+      const updateUser = {
+        streak: user[0].streak,
+        score: user[0].score + 1,
+        username: user[0].username,
+        uid: user[0].uid,
+        id: user[0].id,
+      };
+      console.log(updateUser);
+
+      const request = new Request();
+      request
+        .put(`http://localhost:8082/api/users/${user.uid}`, updateUser)
+        .then(() => {
+          return setResult("You are correct!");
+        });
     } else if (correct === false) {
       return setResult("You are wrong!");
     } else {
       return setResult("Please select an answer");
+    }
+  };
+
+  const setColour = (answer) => {
+    if (checkClicked) {
+      if (selectedAnswer === answer && correct) {
+        return "text-green-500";
+      } else if (selectedAnswer === answer && !correct) {
+        return "text-red-500";
+      }
     }
   };
 
@@ -80,14 +109,7 @@ export default function BeginnerQuestion() {
           <button
             value={answer.correct}
             onClick={(event) => handleAnswerClick(event, answer)}
-            className={`${
-              checkClicked &&
-              (selectedAnswer === answer && correct
-                ? "text-green-500"
-                : selectedAnswer === answer && !correct
-                ? "text-red-500"
-                : "text-black")
-            }`}
+            className={setColour(answer)}
           >
             {answer.answerText}
           </button>
