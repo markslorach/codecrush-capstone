@@ -2,6 +2,8 @@
 import React from "react";
 import { UserName } from "./UserName";
 import { PythonDifficultySelect } from "./PythonDifficultySelect";
+import { UserScore } from "../profile/UserScore";
+import { UserStreak } from "../profile/UserStreak";
 
 export default function Dashboard() {
   return (
@@ -12,6 +14,8 @@ export default function Dashboard() {
       </h3>
 
       <h3>Stats.</h3>
+      <p>Score:</p><UserScore/>
+      <p>Streak:</p><UserStreak/>
       <h3>Today's challenge.</h3>
       <PythonDifficultySelect />
       <button className="p-2 bg-blue-300">JavaScript</button>

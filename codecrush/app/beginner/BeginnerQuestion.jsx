@@ -22,7 +22,7 @@ export default function BeginnerQuestion() {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [checkClicked, setCheckClicked] = useState(false);
 
-  const { user, setUser } = UserAuth();
+  const { user } = UserAuth();
 
   useEffect(() => {
     async function getData() {
@@ -62,8 +62,8 @@ export default function BeginnerQuestion() {
     console.log(user[0]);
     if (correct === true) {
       const updateUser = {
-        streak: user[0].streak,
-        score: user[0].score + 1,
+        streak: user[0].streak + 1,
+        score: user[0].score + 10,
         username: user[0].username,
         uid: user[0].uid,
         id: user[0].id,
@@ -77,7 +77,21 @@ export default function BeginnerQuestion() {
           return setResult("You are correct!");
         });
     } else if (correct === false) {
-      return setResult("You are wrong!");
+      const updateUser = {
+        streak: 0,
+        score: user[0].score,
+        username: user[0].username,
+        uid: user[0].uid,
+        id: user[0].id,
+      };
+      console.log(updateUser);
+
+      const request = new Request();
+      request
+        .put(`http://localhost:8082/api/users/${user.uid}`, updateUser)
+        .then(() => {
+          return setResult("You are wrong!");
+        });
     } else {
       return setResult("Please select an answer");
     }
@@ -122,7 +136,11 @@ export default function BeginnerQuestion() {
           Wanna see a hint?
         </div>
         <div className="collapse-content">
-          <p>This is a hint</p>
+        {beginnerQuestions.map((question) => (
+        <p key={question.id}>
+          <h2>{question.hintText}</h2>
+        </p>
+      ))}
         </div>
       </div>
 

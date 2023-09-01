@@ -4,6 +4,8 @@ import { SignOut } from "./SignOut";
 import { UserName } from "../dashboard/UserName";
 import LightDarkSwitch from "../components/LightDarkSwitch";
 import { Avatar } from "./Avatar";
+import { UserScore } from "./UserScore";
+import { UserStreak } from "./UserStreak";
 
 
 export default function Profile() {
@@ -11,6 +13,8 @@ export default function Profile() {
     <main>
       <h2>Profile Page</h2>
       <Avatar/>
+      <p>Score:</p><UserScore/>
+      <p>Streak:</p><UserStreak/>
       <UserName />
       <LightDarkSwitch />
       <SignOut />
