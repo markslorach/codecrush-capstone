@@ -10,7 +10,7 @@ import { UserStreak } from "./UserStreak";
 
 export default function Profile() {
   return (
-    <main>
+    <main className="flex flex-col items-center justify-center">
       <h2>Profile Page</h2>
       <Avatar/>
       <p>Score:</p><UserScore/>

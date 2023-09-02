@@ -1,15 +1,11 @@
-import React, { useState } from "react";
+"use client"
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
-export const PythonDifficultySelect = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
+export const PythonDifficultySelect = ({ isOpen, setIsOpen }) => {
   return (
     <>
-      <button className="p-2 bg-red-300" onClick={() => setIsOpen(true)}>
-        Python
-      </button>
       <AnimatePresence>
         {isOpen && (
           <motion.div

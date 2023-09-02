@@ -11,15 +11,15 @@ export const LeaderboardComponent = () => {
     });
   }, []);
 
-  const orderedUsers = users.sort();
+  const orderedUsers = users.sort((a, b) => b.score - a.score);
 
-  const currentLeaderboard = orderedUsers.map((user) => {
+  const currentLeaderboard = orderedUsers.map((user, index) => {
     return (
-      <>
+      <div key={index}>
         <p>
           {user.username} - {user.score}
         </p>
-      </>
+      </div>
     );
   });
 

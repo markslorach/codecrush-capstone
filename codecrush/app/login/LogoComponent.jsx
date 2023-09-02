@@ -13,8 +13,9 @@ export default function LogoComponent() {
 
   return (
     <>
-      <p>Logo</p>
-      <span className="loading loading-spinner text-accent"></span>
+      <div className="flex flex-col items-center justify-center h-screen">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
     </>
   );
 }

@@ -1,10 +1,10 @@
-"use client"
-import './globals.css'
-import { Inter } from 'next/font/google'
-import { AuthContextProvider } from './context/AuthContext'
-import { NavBar } from './components/NavBar'
+"use client";
+import "./globals.css";
+import { Inter } from "next/font/google";
+import { AuthContextProvider } from "./context/AuthContext";
+import { NavBar } from "./components/NavBar";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 // export const metadata = {
 //   title: 'Create Next App',
@@ -14,14 +14,12 @@ const inter = Inter({ subsets: ['latin'] })
 export default function RootLayout({ children }) {
   return (
     <html data-theme="night">
-      <body className={inter.className}>
-      <AuthContextProvider>
-      <NavBar/>
-      {children}
-      </AuthContextProvider>
+      <body className={`${inter.className} min-h-screen`}>
+        <AuthContextProvider>
+          {/* <NavBar /> */}
+          {children}
+        </AuthContextProvider>
       </body>
     </html>
-  )
+  );
 }
-
-

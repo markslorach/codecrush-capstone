@@ -31,11 +31,11 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) {
 
 
-//        Question questionBeginner1 = new Question("This is beginner question day 1", "This is a hint", 1, 1);
+//        Question questionBeginner1 = new Question("This is beginner question day 1", "This is a hint", 1, 1, "Explanation");
 //        questionRepository.save(questionBeginner1);
-//        Question questionIntermediate1 = new Question("This is intermediate question day 1", "This is a hint", 1, 2);
+//        Question questionIntermediate1 = new Question("This is intermediate question day 1", "This is a hint", 1, 2, "Explanation");
 //        questionRepository.save(questionIntermediate1);
-//        Question questionAdvanced1 = new Question("This is advanced question day 1", "This is a hint", 1, 3);
+//        Question questionAdvanced1 = new Question("This is advanced question day 1", "This is a hint", 1, 3, "Explanation");
 //        questionRepository.save(questionAdvanced1);
 //
 //        Answer answerBeginner1 = new Answer("This is beginner answer1 which is correct day 1 ", true, questionBeginner1);
@@ -61,11 +61,11 @@ public class DataLoader implements ApplicationRunner {
 //
 //
 //
-//        Question questionBeginner2 = new Question("This is beginner question day 2", "This is a hint", 2, 1);
+//        Question questionBeginner2 = new Question("This is beginner question day 2", "This is a hint", 2, 1, "Explanation");
 //        questionRepository.save(questionBeginner2);
-//        Question questionIntermediate2 = new Question("This is intermediate question day 2", "This is a hint", 2, 2);
+//        Question questionIntermediate2 = new Question("This is intermediate question day 2", "This is a hint", 2, 2, "Explanation");
 //        questionRepository.save(questionIntermediate2);
-//        Question questionAdvanced2 = new Question("This is advanced question day 2", "This is a hint", 2, 3);
+//        Question questionAdvanced2 = new Question("This is advanced question day 2", "This is a hint", 2, 3, "Explanation");
 //        questionRepository.save(questionAdvanced2);
 //
 //        Answer answerBeginner4 = new Answer("This is beginner answer1 which is correct day 2", true, questionBeginner2);
@@ -89,11 +89,11 @@ public class DataLoader implements ApplicationRunner {
 //        Answer answerAdvanced6 = new Answer("This is advanced answer3 which is correct day 2", false, questionAdvanced2);
 //        answerRepository.save(answerAdvanced6);
 //
-//        Question questionBeginner3 = new Question("This is beginner question day 3", "This is a hint", 3, 1);
+//        Question questionBeginner3 = new Question("This is beginner question day 3", "This is a hint", 3, 1, "Explanation");
 //        questionRepository.save(questionBeginner3);
-//        Question questionIntermediate3 = new Question("This is intermediate question day 3", "This is a hint", 3, 2);
+//        Question questionIntermediate3 = new Question("This is intermediate question day 3", "This is a hint", 3, 2, "Explanation");
 //        questionRepository.save(questionIntermediate3);
-//        Question questionAdvanced3 = new Question("This is advanced question day 3", "This is a hint", 3, 3);
+//        Question questionAdvanced3 = new Question("This is advanced question day 3", "This is a hint", 3, 3, "Explanation");
 //        questionRepository.save(questionAdvanced3);
 //
 //        Answer answerBeginner7 = new Answer("This is beginner answer1 which is correct day 3", true, questionBeginner3);
@@ -117,11 +117,11 @@ public class DataLoader implements ApplicationRunner {
 //        Answer answerAdvanced9 = new Answer("This is advanced answer3 which is correct day 3", false, questionAdvanced3);
 //        answerRepository.save(answerAdvanced9);
 //
-//        Question questionBeginner4 = new Question("This is beginner question day 4", "This is a hint", 4, 1);
+//        Question questionBeginner4 = new Question("This is beginner question day 4", "This is a hint", 4, 1, "Explanation");
 //        questionRepository.save(questionBeginner4);
-//        Question questionIntermediate4 = new Question("This is intermediate question day 4", "This is a hint", 4, 2);
+//        Question questionIntermediate4 = new Question("This is intermediate question day 4", "This is a hint", 4, 2, "Explanation");
 //        questionRepository.save(questionIntermediate4);
-//        Question questionAdvanced4 = new Question("This is advanced question day 4", "This is a hint", 4, 3);
+//        Question questionAdvanced4 = new Question("This is advanced question day 4", "This is a hint", 4, 3, "Explanation");
 //        questionRepository.save(questionAdvanced4);
 //
 //        Answer answerBeginner10 = new Answer("This is beginner answer1 which is correct day 4", true, questionBeginner4);
@@ -145,11 +145,11 @@ public class DataLoader implements ApplicationRunner {
 //        Answer answerAdvanced12 = new Answer("This is advanced answer3 which is correct day 4", false, questionAdvanced4);
 //        answerRepository.save(answerAdvanced12);
 //
-//        Question questionBeginner5 = new Question("This is beginner question day 5", "This is a hint", 5, 1);
+//        Question questionBeginner5 = new Question("This is beginner question day 5", "This is a hint", 5, 1, "Explanation");
 //        questionRepository.save(questionBeginner5);
-//        Question questionIntermediate5 = new Question("This is intermediate question day 5", "This is a hint", 5, 2);
+//        Question questionIntermediate5 = new Question("This is intermediate question day 5", "This is a hint", 5, 2, "Explanation");
 //        questionRepository.save(questionIntermediate5);
-//        Question questionAdvanced5 = new Question("This is advanced question day 5", "This is a hint", 5, 3);
+//        Question questionAdvanced5 = new Question("This is advanced question day 5", "This is a hint", 5, 3, "Explanation");
 //        questionRepository.save(questionAdvanced5);
 //
 //        Answer answerBeginner13 = new Answer("This is beginner answer1 which is correct day 5", true, questionBeginner5);
@@ -173,11 +173,11 @@ public class DataLoader implements ApplicationRunner {
 //        Answer answerAdvanced15 = new Answer("This is advanced answer3 which is correct day 5", false, questionAdvanced5);
 //        answerRepository.save(answerAdvanced15);
 //
-//        Question questionBeginner6 = new Question("This is beginner question day 6", "This is a hint", 6, 1);
+//        Question questionBeginner6 = new Question("This is beginner question day 6", "This is a hint", 6, 1, "Explanation");
 //        questionRepository.save(questionBeginner6);
-//        Question questionIntermediate6 = new Question("This is intermediate question day 6", "This is a hint", 6, 2);
+//        Question questionIntermediate6 = new Question("This is intermediate question day 6", "This is a hint", 6, 2, "Explanation");
 //        questionRepository.save(questionIntermediate6);
-//        Question questionAdvanced6 = new Question("This is advanced question day 6", "This is a hint", 6, 3);
+//        Question questionAdvanced6 = new Question("This is advanced question day 6", "This is a hint", 6, 3, "Explanation");
 //        questionRepository.save(questionAdvanced6);
 //
 //        Answer answerBeginner16 = new Answer("This is beginner answer1 which is correct day 6", true, questionBeginner6);
@@ -201,11 +201,11 @@ public class DataLoader implements ApplicationRunner {
 //        Answer answerAdvanced18 = new Answer("This is advanced answer3 which is correct day 6", false, questionAdvanced6);
 //        answerRepository.save(answerAdvanced18);
 //
-//        Question questionBeginner7 = new Question("This is beginner question day 7", "This is a hint", 0, 1);
+//        Question questionBeginner7 = new Question("This is beginner question day 7", "This is a hint", 0, 1, "Explanation");
 //        questionRepository.save(questionBeginner7);
-//        Question questionIntermediate7 = new Question("This is intermediate question day 7", "This is a hint", 0, 2);
+//        Question questionIntermediate7 = new Question("This is intermediate question day 7", "This is a hint", 0, 2, "Explanation");
 //        questionRepository.save(questionIntermediate7);
-//        Question questionAdvanced7 = new Question("This is advanced question day 7", "This is a hint", 0, 3);
+//        Question questionAdvanced7 = new Question("This is advanced question day 7", "This is a hint", 0, 3, "Explanation");
 //        questionRepository.save(questionAdvanced7);
 //
 //        Answer answerBeginner19 = new Answer("This is beginner answer1 which is correct day 7", true, questionBeginner7);

@@ -1,8 +1,9 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { UserAuth } from "../context/AuthContext";
-import increaseScore from "../context/AuthContext";
 import Request from "../helpers/Request";
+import Image from "next/image";
+import Code from "@/public/images/test_code.png";
 
 async function getQuestions() {
   const res = await fetch("http://localhost:8082/api/questions");
@@ -21,6 +22,7 @@ export default function BeginnerQuestion() {
   const [result, setResult] = useState("");
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [checkClicked, setCheckClicked] = useState(false);
+  const [alreadyAnswered, setAlreadyAnswered] = useState(false);
 
   const { user } = UserAuth();
 
@@ -88,8 +90,7 @@ export default function BeginnerQuestion() {
       request
         .put(`http://localhost:8082/api/users/${user.uid}`, updateUser)
         .then(() => {
-          
-          return setResult('You are wrong! The correct answer is');
+          return setResult("You are wrong! The correct answer is");
         });
     } else {
       return setResult("Please select an answer");
@@ -115,7 +116,7 @@ export default function BeginnerQuestion() {
       user[0].uid &&
       beginnerQuestions[0].haveAnswered.includes(user[0].uid)
     ) {
-      console.log("Already Answered");
+      setAlreadyAnswered(true);
     } else {
       setCheckClicked(true);
       checkAnswer();
@@ -140,6 +141,11 @@ export default function BeginnerQuestion() {
       <Link href="/dashboard">
         <button>Close</button>
       </Link>
+
+      <div className="flex justify-center">
+        <Image className="w-9/12" src={Code} alt="Code" placeholder="blur" />
+      </div>
+
       {beginnerQuestions.map((question) => (
         <div key={question.id}>
           <h2>{question.questionText}</h2>
@@ -173,7 +179,8 @@ export default function BeginnerQuestion() {
       </div>
 
       <button onClick={handleCheckClick}>Check Answer</button>
-      <h2>{result}</h2>
+      <h2>{alreadyAnswered ? "Already answered" : result}</h2>
+      {/* <p>{explanation}</p> */}
     </>
   );
 }

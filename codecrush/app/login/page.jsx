@@ -6,7 +6,10 @@ import LoginComponent from './LoginComponent'
 export default function login() {
   return (
     <main>
-      <LoginComponent/>
+ <div className="flex items-center justify-center h-screen">
+  <LoginComponent />
+</div>
+
     </main>
   )
 }

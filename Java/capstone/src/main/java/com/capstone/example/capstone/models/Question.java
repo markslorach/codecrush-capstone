@@ -16,6 +16,8 @@ public class Question {
     private String hintText;
     @Column(name = "dayID")
     private int dayID;
+    @Column(name = "explanation")
+    private String explanation;
     @JsonIgnoreProperties({"question"})
     @OneToMany(mappedBy = "question")
     private List<Answer>answers;
@@ -29,11 +31,12 @@ public class Question {
 
 
 
-    public Question(String questionText, String hintText, int dayID, int questionLevel) {
+    public Question(String questionText, String hintText, int dayID, int questionLevel, String explanation) {
         this.questionText = questionText;
         this.hintText = hintText;
         this.dayID = dayID;
         this.questionLevel = questionLevel;
+        this.explanation = explanation;
         this.answers = new ArrayList<>();
         this.haveAnswered = new ArrayList<>();
     }
@@ -78,6 +81,14 @@ public class Question {
 
     public void setQuestionLevel(int questionLevel) {
         this.questionLevel = questionLevel;
+    }
+
+    public String getExplanation() {
+        return explanation;
+    }
+
+    public void setExplanation(String explanation) {
+        this.explanation = explanation;
     }
 
     public Long getId() {
