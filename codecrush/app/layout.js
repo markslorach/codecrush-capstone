@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
     <html data-theme="night">
       <body className={`${inter.className} min-h-screen`}>
         <AuthContextProvider>
-          <NavBar />
+          {/* <NavBar /> */}
           {children}
         </AuthContextProvider>
       </body>
