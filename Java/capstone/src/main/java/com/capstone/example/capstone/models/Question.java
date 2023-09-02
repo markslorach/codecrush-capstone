@@ -22,7 +22,6 @@ public class Question {
     @OneToMany(mappedBy = "question")
     private List<Answer>answers;
     private int questionLevel;
-//    @Column(name = "haveAnswered")
     private ArrayList<String> haveAnswered;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

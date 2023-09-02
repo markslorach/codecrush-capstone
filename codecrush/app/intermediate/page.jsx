@@ -2,6 +2,7 @@
 import React from 'react'
 import IntermediateQuestion from './IntermediateQuestion'
 
+
 export default function Intermediate() {
   return (
     <main>
