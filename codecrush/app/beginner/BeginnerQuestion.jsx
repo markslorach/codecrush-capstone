@@ -163,8 +163,8 @@ export default function BeginnerQuestion() {
           </button>
         </div>
       ))}
-
-      <div className="collapse bg-base-200">
+        <div className="flex justify-center">
+      <div className="collapse bg-base-200 w-9/12">
         <input type="checkbox" />
         <div className="collapse-title text-xl font-medium cursor-grab">
           Wanna see a hint?
@@ -176,6 +176,7 @@ export default function BeginnerQuestion() {
             </div>
           ))}
         </div>
+      </div>
       </div>
 
       <button onClick={handleCheckClick}>Check Answer</button>
