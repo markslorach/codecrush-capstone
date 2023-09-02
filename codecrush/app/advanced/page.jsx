@@ -7,7 +7,6 @@ export default function Advanced() {
     <main>
         <h2>Advanced Question</h2>
         <AdvancedQuestion/>
-        <button>Check Answer</button>
     </main>
   )
 }

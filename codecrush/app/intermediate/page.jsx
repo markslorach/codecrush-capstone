@@ -8,7 +8,6 @@ export default function Intermediate() {
     <main>
         <h2>Intermediate Question</h2>
         <IntermediateQuestion/>
-        <button>Check Answer</button>
     </main>
   )
 }

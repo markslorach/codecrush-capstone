@@ -23,6 +23,7 @@ export default function BeginnerQuestion() {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [checkClicked, setCheckClicked] = useState(false);
   const [alreadyAnswered, setAlreadyAnswered] = useState(false);
+  const [explanation, setExplanation] = useState("");
 
   const { user } = UserAuth();
 
@@ -36,6 +37,7 @@ export default function BeginnerQuestion() {
       });
 
       setBeginnerQuestions(beginnerQuestions);
+      setExplanation(beginnerQuestions[0].explanation)
 
       const answers = await getAnswers();
       const beginnerAnswers = answers.filter((answer) => {
@@ -117,6 +119,8 @@ export default function BeginnerQuestion() {
       beginnerQuestions[0].haveAnswered.includes(user[0].uid)
     ) {
       setAlreadyAnswered(true);
+      setCheckClicked(true);
+
     } else {
       setCheckClicked(true);
       checkAnswer();
@@ -181,7 +185,7 @@ export default function BeginnerQuestion() {
 
       <button onClick={handleCheckClick}>Check Answer</button>
       <h2>{alreadyAnswered ? "Already answered" : result}</h2>
-      {/* <p>{explanation}</p> */}
+      <h2>{checkClicked ? explanation : "" }</h2>
     </>
   );
 }
