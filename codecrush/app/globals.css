@@ -35,3 +35,11 @@ nav a {
   .dash-heading {
     @apply pb-5 font-semibold
   }
+
+  .dash-stats-container {
+    @apply flex place-content-between mb-5 p-4 rounded-md shadow-md
+  }
+
+  .dash-stats-item {
+    @apply flex flex-col items-center justify-center
+  }
