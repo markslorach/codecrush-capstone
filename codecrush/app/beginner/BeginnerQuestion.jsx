@@ -130,14 +130,19 @@ export default function BeginnerQuestion() {
   };
 
   const setColour = (answer) => {
-    if (checkClicked) {
-      if (selectedAnswer === answer && correct) {
-        return "text-green-500";
-      } else if (selectedAnswer === answer && !correct) {
-        return "text-red-500";
+    if (selectedAnswer === answer) {
+      if (checkClicked) {
+        if (correct) {
+          return "text-green-500";
+        } else {
+          return "text-red-500";
+        }
+      } else {
+        return "text-blue-500";
       }
     }
   };
+  
 
   return (
     <>
