@@ -37,7 +37,7 @@ export default function BeginnerQuestion() {
       });
 
       setBeginnerQuestions(beginnerQuestions);
-      setExplanation(beginnerQuestions[0].explanation)
+      setExplanation(beginnerQuestions[0].explanation);
 
       const answers = await getAnswers();
       const beginnerAnswers = answers.filter((answer) => {
@@ -92,7 +92,7 @@ export default function BeginnerQuestion() {
       request
         .put(`http://localhost:8082/api/users/${user.uid}`, updateUser)
         .then(() => {
-          return setResult("You are wrong! The correct answer is");
+          return setResult("You are wrong");
         });
     } else {
       return setResult("Please select an answer");
@@ -119,7 +119,6 @@ export default function BeginnerQuestion() {
       beginnerQuestions[0].haveAnswered.includes(user[0].uid)
     ) {
       setAlreadyAnswered(true);
-
     } else {
       setCheckClicked(true);
       checkAnswer();
@@ -142,7 +141,6 @@ export default function BeginnerQuestion() {
       }
     }
   };
-  
 
   return (
     <>
@@ -150,8 +148,9 @@ export default function BeginnerQuestion() {
         <button>Close</button>
       </Link>
 
-      <div className="flex justify-center">
-        <Image className="w-9/12" src={Code} alt="Code" placeholder="blur" />
+      {/* CODE BOX */}
+      <div className="flex justify-center min-w-full pt-5 pb-5">
+        <Image src={Code} alt="Code" placeholder="blur" />
       </div>
 
       {beginnerQuestions.map((question) => (
@@ -160,36 +159,49 @@ export default function BeginnerQuestion() {
         </div>
       ))}
 
+      {/* ANSWERS */}
       {beginnerAnswers.map((answer) => (
         <div key={answer.id}>
-          <button
+          <div
             value={answer.correct}
             onClick={(event) => handleAnswerClick(event, answer)}
-            className={setColour(answer)}
+            className={`bg-black mb-6 w-100 p-4 ${setColour(answer)}`}
           >
             {answer.answerText}
-          </button>
+          </div>
         </div>
       ))}
-        <div className="flex justify-center">
-      <div className="collapse bg-base-200 w-9/12">
-        <input type="checkbox" />
-        <div className="collapse-title text-xl font-medium cursor-grab">
-          Wanna see a hint?
+
+      {/* HINT BOX */}
+      <div className="flex justify-center pt-5 pb-5">
+        <div className="collapse bg-base-200">
+          <input type="checkbox" />
+          <div className="collapse-title text-xl font-medium cursor-grab">
+            Wanna see a hint?
+          </div>
+          <div className="collapse-content">
+            {beginnerQuestions.map((question) => (
+              <div key={question.id}>
+                <p>{question.hintText}</p>
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="collapse-content">
-          {beginnerQuestions.map((question) => (
-            <div key={question.id}>
-              <p>{question.hintText}</p>
-            </div>
-          ))}
-        </div>
-      </div>
       </div>
 
+      {/* CHECK ANSWER */}
       <button onClick={handleCheckClick}>Check Answer</button>
-      <h2>{alreadyAnswered ? "Already answered" : result}</h2>
-      <h2>{checkClicked ? explanation : "" }</h2>
+
+      <div>
+        <h2>{alreadyAnswered ? <p>Already answered</p> : result}</h2>
+      </div>
+
+      <div
+        className="bg-black text-white p-5"
+        style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}
+      >
+        {checkClicked ? explanation : ""}
+      </div>
     </>
   );
 }

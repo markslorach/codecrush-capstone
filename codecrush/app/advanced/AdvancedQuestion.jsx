@@ -127,9 +127,7 @@ export default function AdvancedQuestion() {
   };
 
   const setColour = (answer) => {
-    if (selectedAnswer === answer) {
-      return "text-blue-500"; // Apply the blue color for selected answer
-    } else if (checkClicked) {
+    if (checkClicked) {
       if (selectedAnswer === answer && correct) {
         return "text-green-500";
       } else if (selectedAnswer === answer && !correct) {
@@ -145,7 +143,7 @@ export default function AdvancedQuestion() {
       </Link>
 
       <div className="flex justify-center">
-        <Image className="w-9/12" src={Code} alt="Code" placeholder="blur" />
+        <Image src={Code} alt="Code" placeholder="blur" />
       </div>
 
       {advancedQuestions.map((question) => (

@@ -16,7 +16,7 @@ export default function Profile() {
       <p>Score:</p><UserScore/>
       <p>Streak:</p><UserStreak/>
       <UserName />
-      <LightDarkSwitch />
+      {/* <LightDarkSwitch /> */}
       <SignOut />
     </main>
   );

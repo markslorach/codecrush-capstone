@@ -1,10 +1,11 @@
 "use client";
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import { AuthContextProvider } from "./context/AuthContext";
 import { NavBar } from "./components/NavBar";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"] });
+
 
 // export const metadata = {
 //   title: 'Create Next App',
@@ -13,8 +14,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
   return (
-    <html data-theme="night">
-      <body className={`${inter.className} min-h-screen`}>
+    <html data-theme="winter">
+      <body className={`${poppins.className} min-h-screen`}>
         <AuthContextProvider>
           {/* <NavBar /> */}
           {children}

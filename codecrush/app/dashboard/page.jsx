@@ -4,34 +4,49 @@ import { UserName } from "./UserName";
 import { PythonDifficultySelect } from "./PythonDifficultySelect";
 import { UserScore } from "../profile/UserScore";
 import { UserStreak } from "../profile/UserStreak";
-import { BottomNav } from "../components/BottomNav";
+import { Avatar } from "../profile/Avatar";
 
 export default function Dashboard() {
   const [isPythonModalOpen, setIsPythonModalOpen] = useState(false);
 
   return (
-    <main className="p-10 min-h-screen">
-      <h2>Dashboard</h2>
+    <main className="p-8 min-h-screen">
 
-      <h2 className="flex space-x-2">
-        <span>Hello,</span>
-        <UserName />
-        <span>👋</span>
-      </h2>
+      {/* WELCOME */}
+      <div className="flex place-content-between">
+        <div className="pt-8 pb-8 text-xl">
+          <p className="text-base">Hello,</p>
+          <UserName />
+        </div>
+        <Avatar/>
+      </div>
 
-      <h2>Stats.</h2>
 
-      <p>Score:</p>
-      <UserScore />
+      {/* STATS */}
+      <h2 className="dash-heading">Stats</h2>
+      <div className="flex place-content-between mb-5 p-4 rounded-md shadow-md">
+        <div className="flex flex-col items-center justify-center">
+          <p>Score</p>
+          <UserScore />
+        </div>
 
-      <p>Streak:</p>
-      <UserStreak />
+        <div className="flex flex-col items-center justify-center">
+          <p>Streak</p>
+          <UserStreak />
+        </div>
 
-      <h2>Today's challenge.</h2>
+        <div className="flex flex-col items-center justify-center">
+          <p>Leaderboard</p>
+          <p>0</p>
+        </div>
+      </div>
 
+      <h2 className="dash-heading">Today's challenge</h2>
+
+      {/* PYTHON CARD */}
       <div className="flex place-content-between">
         <button
-          className="flex flex-col gap-2 items-center bg-red-700 rounded-xl p-10"
+          className="flex flex-col gap-2 items-center bg-red-700 rounded-md p-8"
           onClick={() => setIsPythonModalOpen(true)}
         >
           <img src="image_url" alt="image" className="w-full h-1/3" />
@@ -44,9 +59,11 @@ export default function Dashboard() {
           setIsOpen={setIsPythonModalOpen}
         />
 
-        <button className="flex flex-col gap-2 items-center bg-red-700 rounded-xl p-10">JavaScript</button>
+        {/* JAVASCRIPT CARD */}
+        <button className="flex flex-col gap-2 items-center bg-red-700 rounded-md p-8">
+          JavaScript
+        </button>
       </div>
-      <BottomNav/>
     </main>
   );
 }
