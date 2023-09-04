@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
+
 export const BottomNav = () => {
   return (
 <div className="btm-nav bg-blue-100 rounded-t-md border-t-2 border-gray-100">

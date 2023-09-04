@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Request from "../helpers/Request";
+import Image from "next/image";
+import { BottomNav } from "../components/BottomNav";
+import Score from "@/public/images/score.png";
+import Streak from "@/public/images/streak.png";
 
 export const LeaderboardComponent = () => {
   const [users, setUsers] = useState([]);
@@ -11,60 +15,70 @@ export const LeaderboardComponent = () => {
     });
   }, []);
 
-  const orderedUsers = users.sort((a, b) => b.score - a.score && b.streak - a.streak);
+  const orderedUsers = users.sort(
+    (a, b) => b.score - a.score && b.streak - a.streak
+  );
 
-  const currentLeaderboard = orderedUsers.map((user, index) => {
-
-
-
+  const scoreLeaderboard = orderedUsers.map((user, index) => {
     return (
       <>
-
-      <div key={index}>
-        
-        
-          
-          <div>
-          {user.username} - {user.score}
-          </div>
-
-          <div>
-          {user.username} - {user.streak}
-          </div>
-          </div>
-
+        <div key={index}>
+          <p>
+            {user.username} - {user.score}
+          </p>
+        </div>
       </>
     );
   });
-  
+
+  const streakLeaderboard = orderedUsers.map((user, index) => {
+    return (
+      <>
+        <div key={index}>
+          <p>
+            {user.username} - {user.streak}
+          </p>
+        </div>
+      </>
+    );
+  });
 
   return (
     <>
       <h1 className="pb-8 text-xl font-semibold underline ">Leaderboard</h1>
 
-{/* //Left column */}
 
-      <div className="flex gap-10">
-      <ul class="list-inside ...">
-      <li className="pb-3 font-semibold text-xl underline ps-10">Score</li>
-      
-      <div className="bg bg-red-500">
-      {currentLeaderboard}
-      </div>
-      </ul>
-      
-{/* Right column */}
 
-      <div className="flex gap-10">
-      <ul class="list-outside ...">
-      <li className="pb-3 font-semibold text-xl underline ps-10">Streak</li>
-      <div className="bg-blue-100">
-      {currentLeaderboard}
-      </div>
-      </ul>
-      </div>
-      </div>
+      <div className="flex gap-3">
+
+      <div className="w-1/2">
+          <div>
+            <div className="flex items-center gap-2 mb-5">
+              <p className="font-semibold text-xl">Score</p>
+              <Image src={Score} alt="Score" width={16} height={16} />
+            </div>
+
+            <div className="bg-red-100">{scoreLeaderboard}</div>
+          </div>
+        </div>
+
+
+
+
       
+
+        <div className="w-1/2">
+          <div>
+            <div className="flex items-center gap-2 mb-5">
+              <p className="font-semibold text-xl">Streak</p>
+              <Image src={Streak} alt="Streak" width={16} height={16} />
+            </div>
+
+            <div className="bg-blue-100">{streakLeaderboard}</div>
+          </div>
+        </div>
+      </div>
+      <BottomNav />
     </>
   );
 };
