@@ -11,22 +11,60 @@ export const LeaderboardComponent = () => {
     });
   }, []);
 
-  const orderedUsers = users.sort((a, b) => b.score - a.score);
+  const orderedUsers = users.sort((a, b) => b.score - a.score && b.streak - a.streak);
 
   const currentLeaderboard = orderedUsers.map((user, index) => {
+
+
+
     return (
+      <>
+
       <div key={index}>
-        <p>
+        
+        
+          
+          <div>
           {user.username} - {user.score}
-        </p>
-      </div>
+          </div>
+
+          <div>
+          {user.username} - {user.streak}
+          </div>
+          </div>
+
+      </>
     );
   });
+  
 
   return (
     <>
-      <h1>Leaderboard</h1>
+      <h1 className="pb-8 text-xl font-semibold underline ">Leaderboard</h1>
+
+{/* //Left column */}
+
+      <div className="flex gap-10">
+      <ul class="list-inside ...">
+      <li className="pb-3 font-semibold text-xl underline ps-10">Score</li>
+      
+      <div className="bg bg-red-500">
       {currentLeaderboard}
+      </div>
+      </ul>
+      
+{/* Right column */}
+
+      <div className="flex gap-10">
+      <ul class="list-outside ...">
+      <li className="pb-3 font-semibold text-xl underline ps-10">Streak</li>
+      <div className="bg-blue-100">
+      {currentLeaderboard}
+      </div>
+      </ul>
+      </div>
+      </div>
+      
     </>
   );
 };
