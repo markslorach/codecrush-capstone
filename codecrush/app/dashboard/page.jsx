@@ -9,6 +9,8 @@ import { BottomNav } from "../components/BottomNav";
 import Image from "next/image";
 import Python from "@/public/images/python_logo.png";
 import js from "@/public/images/js_logo.png";
+import Java from "@/public/images/java_logo.png";
+import cLogo from "@/public/images/c_logo.png";
 import Streak from "@/public/images/streak.png";
 import Score from "@/public/images/score.png";
 import Trophy from "@/public/images/trophy.png";
@@ -19,25 +21,24 @@ export default function Dashboard() {
 
   return (
     <main className="p-8 min-h-screen xl:pl-96 xl:pr-96">
-    
       {/* WELCOME */}
       <div className="flex place-content-between">
         <div className="py-8 text-xl">
-          <p className="text-base">Hello,</p>
+          <p className="text-base text-gray-500">Hello,</p>
           <UserName />
         </div>
         <Avatar />
       </div>
 
       <div className="p-3 bg-blue-100 rounded-md shadow-sm mb-5">
-        <CodingFacts/>
+        <CodingFacts />
       </div>
 
       {/* STATS */}
       <h2 className="dash-heading">Stats</h2>
       <div className="dash-stats-container">
         <div className="dash-stats-item">
-          <p>Score</p>
+          <p className="text-sm">Score</p>
           <div className="flex items-center gap-2">
             <b>
               <UserScore />
@@ -47,7 +48,7 @@ export default function Dashboard() {
         </div>
 
         <div className="dash-stats-item">
-          <p>Streak</p>
+          <p className="text-sm">Streak</p>
           <div className="flex items-center gap-2">
             <b>
               <UserStreak />
@@ -57,7 +58,7 @@ export default function Dashboard() {
         </div>
 
         <div className="dash-stats-item">
-          <p>Leaderboard</p>
+          <p className="text-sm">Leaderboard</p>
           <div className="flex items-center gap-2">
             <p>
               <b>0</b>
@@ -70,13 +71,13 @@ export default function Dashboard() {
       <h2 className="dash-heading">Today's challenge</h2>
 
       {/* PYTHON CARD */}
-      <div className="flex place-content-between gap-5">
+      <div className="flex place-content-between gap-5 mb-5">
         <button
           className="python-card"
           onClick={() => setIsPythonModalOpen(true)}
         >
           <div className="avatar">
-            <div className="w-16 rounded-full p-2">
+            <div className="w-16 rounded-full p-2 bg-slate-50">
               <Image src={Python} alt="Python" placeholder="blur" />
             </div>
           </div>
@@ -95,7 +96,7 @@ export default function Dashboard() {
         {/* JAVASCRIPT CARD */}
         <button className="js-card">
           <div className="avatar">
-            <div className="w-16 rounded-full p-2">
+            <div className="w-16 rounded-full p-2 bg-slate-50">
               <Image src={js} alt="Python" placeholder="blur" />
             </div>
           </div>
@@ -108,6 +109,30 @@ export default function Dashboard() {
       </div>
 
       <h2 className="dash-heading">Coming soon</h2>
+
+      {/* JAVA CARD */}
+      <div className="flex place-content-between gap-5 mb-20">
+        <div className="java-card">
+          <div className="avatar">
+            <div className="w-16 rounded-full p-2 bg-slate-50">
+              <Image src={Java} alt="Java" placeholder="blur" />
+            </div>
+          </div>
+
+          <h3 className="text-center my-0 font-semibold">Java</h3>
+        </div>
+
+        {/* C# CARD */}
+        <div className="c-card">
+          <div className="avatar">
+            <div className="w-16 rounded-full p-2 bg-slate-50">
+              <Image src={cLogo} alt="C#" placeholder="blur" />
+            </div>
+          </div>
+
+          <h3 className="text-center my-0 font-semibold">C#</h3>
+        </div>
+      </div>
 
       <BottomNav />
     </main>

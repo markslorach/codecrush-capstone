@@ -7,7 +7,7 @@ export default function LogoComponent() {
   useEffect(() => {
     const timer = setTimeout(() => {
       router.push("/login");
-    }, 3100);
+    }, 2500);
     return () => clearTimeout(timer);
   });
 
