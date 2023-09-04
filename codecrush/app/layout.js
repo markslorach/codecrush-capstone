@@ -15,7 +15,7 @@ const poppins = Poppins({ subsets: ["latin"], weight: ["100", "200", "300", "400
 export default function RootLayout({ children }) {
   return (
     <html data-theme="winter">
-      <body className={`${poppins.className} min-h-screen`}>
+      <body className={`${poppins.className} min-h-screen bg-slate-50`}>
         <AuthContextProvider>
           {/* <NavBar /> */}
           {children}
