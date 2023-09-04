@@ -5,15 +5,20 @@ import { PythonDifficultySelect } from "./PythonDifficultySelect";
 import { UserScore } from "../profile/UserScore";
 import { UserStreak } from "../profile/UserStreak";
 import { Avatar } from "../profile/Avatar";
+import { BottomNav } from "../components/BottomNav";
 import Image from "next/image";
 import Python from "@/public/images/python_logo.png";
 import js from "@/public/images/js_logo.png";
+import Streak from "@/public/images/streak.png";
+import Score from "@/public/images/score.png";
+import Trophy from "@/public/images/trophy.png";
 
 export default function Dashboard() {
   const [isPythonModalOpen, setIsPythonModalOpen] = useState(false);
 
   return (
-    <main className="p-8 min-h-screen">
+    <main className="p-8 min-h-screen bg-slate-50">
+
       {/* WELCOME */}
       <div className="flex place-content-between">
         <div className="pt-8 pb-8 text-xl">
@@ -23,22 +28,34 @@ export default function Dashboard() {
         <Avatar />
       </div>
 
+      <div className="p-9 bg-blue-100 rounded-md shadow-sm mb-5"></div>
+
       {/* STATS */}
       <h2 className="dash-heading">Stats</h2>
       <div className="dash-stats-container">
         <div className="dash-stats-item">
           <p>Score</p>
-          <UserScore />
+          <div className="flex items-center gap-2">
+          <b><UserScore /></b>
+          <Image src={Score} alt="Score" width={16} height={16}/>
+          </div>
         </div>
-
+        
         <div className="dash-stats-item">
           <p>Streak</p>
-          <UserStreak />
+        <div className="flex items-center gap-2">
+          <b><UserStreak /></b>
+          <Image src={Streak} alt="Streak" width={16} height={16}/>
+          </div>
         </div>
+        
 
         <div className="dash-stats-item">
           <p>Leaderboard</p>
-          <p>0</p>
+          <div className="flex items-center gap-2">
+          <p><b>0</b></p>
+          <Image src={Trophy} alt="Trophy" width={16} height={16}/>
+          </div>
         </div>
       </div>
 
@@ -47,7 +64,7 @@ export default function Dashboard() {
       {/* PYTHON CARD */}
       <div className="flex place-content-between gap-5">
         <button
-          className="flex flex-col gap-1 items-center bg-white rounded-md shadow-md py-5 pl-3 pr-3 w-1/2"
+          className="python-card"
           onClick={() => setIsPythonModalOpen(true)}>
         
           <div className="avatar">
@@ -67,7 +84,7 @@ export default function Dashboard() {
 
         {/* JAVASCRIPT CARD */}
         <button
-          className="flex flex-col gap-1 items-center bg-white rounded-md shadow-md py-5 pl-3 pr-3 w-1/2">
+          className="js-card">
         
           <div className="avatar">
             <div className="w-16 rounded-full p-2">
@@ -79,6 +96,7 @@ export default function Dashboard() {
           <p className="my-0 py-1 text-xs">Think you can take on today's JavaScript challenge?</p>
         </button>
       </div>
+      <BottomNav/>
     </main>
   );
 }
