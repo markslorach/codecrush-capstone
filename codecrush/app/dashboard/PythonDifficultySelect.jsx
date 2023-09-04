@@ -9,7 +9,7 @@ export const PythonDifficultySelect = ({ isOpen, setIsOpen }) => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="w-screen h-3/5 bg-[red] fixed z-[9999] left-0 bottom-0"
+            className="w-screen h-1/3 bg-[red] fixed z-[9999] left-0 bottom-0"
             initial={{ y: "100vh", opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: "100vh", opacity: 0 }}

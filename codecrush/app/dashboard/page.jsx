@@ -12,6 +12,7 @@ import js from "@/public/images/js_logo.png";
 import Streak from "@/public/images/streak.png";
 import Score from "@/public/images/score.png";
 import Trophy from "@/public/images/trophy.png";
+import { CodingFacts } from "../components/CodingFacts";
 
 export default function Dashboard() {
   const [isPythonModalOpen, setIsPythonModalOpen] = useState(false);
@@ -28,7 +29,9 @@ export default function Dashboard() {
         <Avatar />
       </div>
 
-      <div className="p-9 bg-blue-100 rounded-md shadow-sm mb-5"></div>
+      <div className="p-3 bg-blue-100 rounded-md shadow-sm mb-5">
+        <CodingFacts/>
+      </div>
 
       {/* STATS */}
       <h2 className="dash-heading">Stats</h2>
@@ -104,7 +107,7 @@ export default function Dashboard() {
         </button>
       </div>
 
-      {/* <h2 className="dash-heading">Learn</h2> */}
+      <h2 className="dash-heading">Coming soon</h2>
 
       <BottomNav />
     </main>
