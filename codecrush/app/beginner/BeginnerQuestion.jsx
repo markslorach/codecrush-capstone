@@ -138,7 +138,7 @@ export default function BeginnerQuestion() {
           return "bg-red-200";
         }
       } else {
-        return "bg-blue-200";
+        return "text-blue-200";
       }
     }
   };
@@ -175,15 +175,15 @@ export default function BeginnerQuestion() {
 
       {beginnerAnswers.map((answer) => (
         <div key={answer.id}>
-          <div
+          <button
             value={answer.correct}
             onClick={(event) => handleAnswerClick(event, answer)}
-            className={`bg-white mb-4 w-100 p-3 rounded-md shadow-md ${setColour(
+            className={`mb-4 min-w-full text-left p-3 rounded-md shadow-md bg-white ${setColour(
               answer
             )}`}
           >
             {answer.answerText}
-          </div>
+          </button>
         </div>
       ))}
 

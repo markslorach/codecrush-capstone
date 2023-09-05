@@ -17,8 +17,6 @@ import Trophy from "@/public/images/trophy.png";
 import { CodingFacts } from "../components/CodingFacts";
 import { DayDate } from "../components/DayDate";
 
-
-
 export default function Dashboard() {
   const [isPythonModalOpen, setIsPythonModalOpen] = useState(false);
 
@@ -28,12 +26,15 @@ export default function Dashboard() {
       <div className="flex place-content-between">
         <div className="py-8 text-xl">
           <p className="text-base text-gray-500">Hello,</p>
-          <UserName />
+          <div className="flex">
+            <UserName />
+            <span className="wave ml-2">👋</span>
+          </div>
         </div>
         <Avatar />
       </div>
 
-      <DayDate/>
+      <DayDate />
 
       <div className="p-3 bg-blue-100 rounded-md shadow-sm mb-8 pl-5 pr-5">
         <CodingFacts />
@@ -66,12 +67,9 @@ export default function Dashboard() {
           <p className="text-sm">Leaderboard</p>
           <div className="flex items-center gap-2">
             <p>
-              <b>
-                0
-                </b>
+              <b>0</b>
             </p>
             <Image src={Trophy} alt="Trophy" width={16} height={16} />
-            
           </div>
         </div>
       </div>
@@ -112,9 +110,9 @@ export default function Dashboard() {
       </div>
 
       <PythonDifficultySelect
-          isOpen={isPythonModalOpen}
-          setIsOpen={setIsPythonModalOpen}
-        />
+        isOpen={isPythonModalOpen}
+        setIsOpen={setIsPythonModalOpen}
+      />
 
       <h2 className="dash-heading">Coming soon</h2>
 
