@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { UserAuth } from "../context/AuthContext";
 import Request from "../helpers/Request";
 import Image from "next/image";
-import Code from "@/public/images/question_images/beginner_len_05.png";
+import Code from "@/public/images/question_images/advanced_question_06.png";
 
 async function getQuestions() {
   const res = await fetch("http://localhost:8082/api/questions");
