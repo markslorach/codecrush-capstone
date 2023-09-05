@@ -16,8 +16,12 @@ import Score from "@/public/images/score.png";
 import Trophy from "@/public/images/trophy.png";
 import { CodingFacts } from "../components/CodingFacts";
 
+
+
 export default function Dashboard() {
   const [isPythonModalOpen, setIsPythonModalOpen] = useState(false);
+
+ 
 
   return (
     <main className="p-8 min-h-screen xl:pl-96 xl:pr-96">
@@ -54,6 +58,7 @@ export default function Dashboard() {
               <UserStreak />
             </b>
             <Image src={Streak} alt="Streak" width={16} height={16} />
+           
           </div>
         </div>
 
@@ -64,6 +69,7 @@ export default function Dashboard() {
               <b>0</b>
             </p>
             <Image src={Trophy} alt="Trophy" width={16} height={16} />
+            
           </div>
         </div>
       </div>
