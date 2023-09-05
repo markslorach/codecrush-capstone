@@ -132,12 +132,12 @@ export default function BeginnerQuestion() {
     if (selectedAnswer === answer) {
       if (checkClicked) {
         if (correct) {
-          return "text-green-400";
+          return "bg-green-100";
         } else {
-          return "text-red-400";
+          return "bg-red-100";
         }
       } else {
-        return "text-blue-400";
+        return "bg-blue-100";
       }
     }
   };
