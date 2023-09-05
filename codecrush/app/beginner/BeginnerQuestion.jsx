@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { UserAuth } from "../context/AuthContext";
 import Request from "../helpers/Request";
 import Image from "next/image";
-import Code from "@/public/images/test_code.png";
+import Code from "@/public/images/question_images/beginner_len_05.png";
 
 async function getQuestions() {
   const res = await fetch("http://localhost:8082/api/questions");
@@ -145,17 +145,26 @@ export default function BeginnerQuestion() {
   return (
     <>
       <Link href="/dashboard">
-        <button>Close</button>
+        <button className=" hover:text-gray-500">
+          <b>X</b>
+        </button>
       </Link>
 
+      <h2 className="mt-5 font-semibold text-lg">Beginner question</h2>
+
       {/* CODE BOX */}
-      <div className="flex justify-center min-w-full pt-5 pb-5">
-        <Image src={Code} alt="Code" placeholder="blur" />
+      <div className="flex justify-center min-w-full pt-5 pb-6">
+        <Image
+          className="rounded-md border-4 border-gray-300 shadow-sm"
+          src={Code}
+          alt="Code"
+          placeholder="blur"
+        />
       </div>
 
       {beginnerQuestions.map((question) => (
-        <div key={question.id}>
-          <h2>{question.questionText}</h2>
+        <div className="p-3 bg-white rounded-md shadow-md mb-5" key={question.id}>
+          <p className="text-base">{question.questionText}</p>
         </div>
       ))}
 
@@ -174,10 +183,10 @@ export default function BeginnerQuestion() {
 
       {/* HINT BOX */}
       <div className="flex justify-center pt-5 pb-5">
-        <div className="collapse bg-base-200">
+        <div className="collapse bg-base-200 rounded-md">
           <input type="checkbox" />
-          <div className="collapse-title text-xl font-medium cursor-grab">
-            Wanna see a hint?
+          <div className="collapse-title text-lg font-medium cursor-grab">
+            Click for a hint
           </div>
           <div className="collapse-content">
             {beginnerQuestions.map((question) => (
