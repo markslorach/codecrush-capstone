@@ -15,6 +15,8 @@ import Streak from "@/public/images/streak.png";
 import Score from "@/public/images/score.png";
 import Trophy from "@/public/images/trophy.png";
 import { CodingFacts } from "../components/CodingFacts";
+// import {UserRank} from" ../components/UserRank";
+
 
 
 
@@ -58,7 +60,6 @@ export default function Dashboard() {
               <UserStreak />
             </b>
             <Image src={Streak} alt="Streak" width={16} height={16} />
-           
           </div>
         </div>
 
@@ -66,7 +67,9 @@ export default function Dashboard() {
           <p className="text-sm">Leaderboard</p>
           <div className="flex items-center gap-2">
             <p>
-              <b>0</b>
+              <b>
+                0
+                </b>
             </p>
             <Image src={Trophy} alt="Trophy" width={16} height={16} />
             

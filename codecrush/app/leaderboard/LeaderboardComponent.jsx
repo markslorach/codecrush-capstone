@@ -21,14 +21,17 @@ export const LeaderboardComponent = () => {
 
   const userLeaderboard = orderedUsers.map((user, index) => {
     const firstName = user.username.split(" ")[0];
+  
     return (
       <div key={index}>
         <p className="py-1">
-
+        {firstName}
         </p>
       </div>
     );
   });
+
+
 
   const scoreLeaderboard = orderedUsers.map((user, index) => {
     const firstName = user.username.split(" ")[0];
@@ -41,7 +44,19 @@ export const LeaderboardComponent = () => {
       </div>
     );
   })
-  
+
+  // const rankLeaderboard = orderedUsers.map((user, index) => {
+  //   const rankPosition = user.userRank[0];
+
+  //   return (
+  //   <div key={index}>
+  //     {/* <p> {++index}</p> */}
+  //     <p>{user.rank}</p>
+  //   </div>
+  //   );
+  // })
+
+
 
   return (
     <>
