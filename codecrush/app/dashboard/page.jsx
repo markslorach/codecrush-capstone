@@ -15,6 +15,7 @@ import Streak from "@/public/images/streak.png";
 import Score from "@/public/images/score.png";
 import Trophy from "@/public/images/trophy.png";
 import { CodingFacts } from "../components/CodingFacts";
+import { DayDate } from "../components/DayDate";
 
 
 
@@ -33,6 +34,8 @@ export default function Dashboard() {
         </div>
         <Avatar />
       </div>
+
+      <DayDate/>
 
       <div className="p-3 bg-blue-100 rounded-md shadow-sm mb-8 pl-5 pr-5">
         <CodingFacts />
