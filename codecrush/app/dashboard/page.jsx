@@ -15,13 +15,12 @@ import Streak from "@/public/images/streak.png";
 import Score from "@/public/images/score.png";
 import Trophy from "@/public/images/trophy.png";
 import { CodingFacts } from "../components/CodingFacts";
+import { DayDate } from "../components/DayDate";
 
 
 
 export default function Dashboard() {
   const [isPythonModalOpen, setIsPythonModalOpen] = useState(false);
-
- 
 
   return (
     <main className="p-8 min-h-screen xl:pl-96 xl:pr-96">
@@ -146,4 +145,4 @@ export default function Dashboard() {
       <BottomNav />
     </main>
   );
-}>
+}
