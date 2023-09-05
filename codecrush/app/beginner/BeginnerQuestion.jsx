@@ -119,7 +119,6 @@ export default function BeginnerQuestion() {
       beginnerQuestions[0].haveAnswered.includes(user[0].uid)
     ) {
       setAlreadyAnswered(true);
-      setCheckClicked(true);
 
     } else {
       setCheckClicked(true);

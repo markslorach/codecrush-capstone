@@ -12,3 +12,7 @@ nav {
 nav a {
     @apply pr-2;
   }
+
+h2 {
+  @apply mb-10 text-xl
+}
