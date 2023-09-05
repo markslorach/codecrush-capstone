@@ -4,6 +4,7 @@ import { UserAuth } from "../context/AuthContext";
 import Request from "../helpers/Request";
 import Image from "next/image";
 import Code from "@/public/images/question_images/advanced_question_06.png";
+import { DayDate } from "../components/DayDate";
 
 async function getQuestions() {
   const res = await fetch("http://localhost:8082/api/questions");
@@ -150,8 +151,6 @@ export default function BeginnerQuestion() {
         </button>
       </Link>
 
-      <h2 className="mt-5 font-semibold text-lg">Beginner question</h2>
-
       {/* CODE BOX */}
       <div className="flex justify-center min-w-full pt-5 pb-6">
         <Image
@@ -163,27 +162,30 @@ export default function BeginnerQuestion() {
       </div>
 
       {beginnerQuestions.map((question) => (
-        <div className="p-3 bg-blue-100 rounded-md shadow-sm mb-6" key={question.id}>
+        <div
+          className="p-3 bg-blue-100 rounded-md shadow-sm mb-6"
+          key={question.id}
+        >
           <p className="text-base">{question.questionText}</p>
         </div>
       ))}
 
       {/* ANSWERS */}
       <h2 className="dash-heading">Select an answer</h2>
-      
+
       {beginnerAnswers.map((answer) => (
         <div key={answer.id}>
           <div
             value={answer.correct}
             onClick={(event) => handleAnswerClick(event, answer)}
-            className={`bg-white mb-4 w-100 p-3 rounded-md shadow-md ${setColour(answer)}`}
+            className={`bg-white mb-4 w-100 p-3 rounded-md shadow-md ${setColour(
+              answer
+            )}`}
           >
             {answer.answerText}
           </div>
         </div>
-        
       ))}
-    
 
       {/* HINT BOX */}
       <div className="flex justify-center ">
@@ -203,7 +205,14 @@ export default function BeginnerQuestion() {
       </div>
 
       {/* CHECK ANSWER */}
-      <button onClick={handleCheckClick} className="p-3 text-white bg-gray-300 text-sm rounded-md">Check Answer</button>
+      <div className="min-w-full bg-gray-200 fixed bottom-0 left-0 flex justify-center p-8 rounded-t-md border-t-2 border-gray-100">
+        <button
+          onClick={handleCheckClick}
+          className="p-3 w-full bg-white rounded-md shadow-sm font-semibold"
+        >
+          Check Answer
+        </button>
+      </div>
 
       <div>
         <h2>{alreadyAnswered ? <p>Already answered</p> : result}</h2>
@@ -213,7 +222,7 @@ export default function BeginnerQuestion() {
         className="bg-black text-white p-5"
         style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}
       > */}
-        {checkClicked ? explanation : ""}
+      {checkClicked ? explanation : ""}
       {/* </div> */}
     </>
   );
