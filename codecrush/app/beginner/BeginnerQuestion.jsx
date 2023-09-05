@@ -3,8 +3,9 @@ import React, { useState, useEffect } from "react";
 import { UserAuth } from "../context/AuthContext";
 import Request from "../helpers/Request";
 import Image from "next/image";
-import Code from "@/public/images/question_images/advanced_question_06.png";
-import { DayDate } from "../components/DayDate";
+import Code from "@/public/images/question_images/carbon.png";
+import Score from "@/public/images/score.png";
+import { UserScore } from "../profile/UserScore";
 
 async function getQuestions() {
   const res = await fetch("http://localhost:8082/api/questions");
@@ -145,11 +146,28 @@ export default function BeginnerQuestion() {
 
   return (
     <>
-      <Link href="/dashboard">
-        <button className=" hover:text-gray-500">
-          <b>X</b>
-        </button>
-      </Link>
+      <div className="flex place-content-between">
+        <Link className="flex flex-col justify-center" href="/dashboard">
+          <button className=" hover:text-gray-500">
+            <b>X</b>
+          </button>
+        </Link>
+
+        <div className="bg-slate-200 rounded-full py-1 px-3">
+          <div className="flex items-center gap-2">
+            <b>
+              <UserScore />
+            </b>
+            <Image
+              className="mb-1"
+              src={Score}
+              alt="Score"
+              width={16}
+              height={16}
+            />
+          </div>
+        </div>
+      </div>
 
       {/* CODE BOX */}
       <div className="flex justify-center min-w-full pt-5 pb-6">

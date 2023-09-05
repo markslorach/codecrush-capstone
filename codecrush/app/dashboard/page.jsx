@@ -22,6 +22,7 @@ export default function Dashboard() {
 
   return (
     <main className="p-8 min-h-screen xl:pl-96 xl:pr-96">
+    
       {/* WELCOME */}
       <div className="flex place-content-between">
         <div className="py-8 text-xl">
