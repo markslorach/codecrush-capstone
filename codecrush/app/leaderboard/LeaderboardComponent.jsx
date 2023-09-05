@@ -24,7 +24,8 @@ export const LeaderboardComponent = () => {
     return (
       <div key={index}>
         <p className="py-1">
-          {firstName} - {user.score}
+          {firstName} - {user.score} 
+          {user.scoreLeaderboard}
         </p>
       </div>
     );
