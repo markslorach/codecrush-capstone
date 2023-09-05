@@ -65,16 +65,26 @@ export const LeaderboardComponent = () => {
               <p className="font-semibold text-xl">Score</p>
             
               <Image src={Score} alt="Score" width={16} height={16} />
+              
             </div>
-
+          
       <div className="overflow-x-auto">
         <table className="table table-zebra">
           {/* head */}
 
+          <thead>
+      <tr>
+        
+        <th>Rank</th>
+        <th>Username</th>
+        <th>Score</th>
+      </tr>
+    </thead>
           <tbody>
             {/* row 1 */}
             <tr>
               <th>1</th>
+
               <td>{userLeaderboard[0]}</td>
               <td>{scoreLeaderboard[0]}</td>
               
