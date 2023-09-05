@@ -132,12 +132,12 @@ export default function BeginnerQuestion() {
     if (selectedAnswer === answer) {
       if (checkClicked) {
         if (correct) {
-          return "text-green-500";
+          return "text-green-400";
         } else {
-          return "text-red-500";
+          return "text-red-400";
         }
       } else {
-        return "text-blue-500";
+        return "text-blue-400";
       }
     }
   };
@@ -163,18 +163,19 @@ export default function BeginnerQuestion() {
       </div>
 
       {beginnerQuestions.map((question) => (
-        <div className="p-3 bg-white rounded-md shadow-md mb-5" key={question.id}>
+        <div className="p-3 bg-blue-100 rounded-md shadow-sm mb-6" key={question.id}>
           <p className="text-base">{question.questionText}</p>
         </div>
       ))}
 
       {/* ANSWERS */}
+      <h2 className="dash-heading">Select an answer</h2>
       {beginnerAnswers.map((answer) => (
         <div key={answer.id}>
           <div
             value={answer.correct}
             onClick={(event) => handleAnswerClick(event, answer)}
-            className={`bg-black mb-6 w-100 p-4 ${setColour(answer)}`}
+            className={`bg-white mb-6 w-100 p-3 rounded-md shadow-md ${setColour(answer)}`}
           >
             {answer.answerText}
           </div>
@@ -182,7 +183,7 @@ export default function BeginnerQuestion() {
       ))}
 
       {/* HINT BOX */}
-      <div className="flex justify-center pt-5 pb-5">
+      <div className="flex justify-center">
         <div className="collapse bg-base-200 rounded-md">
           <input type="checkbox" />
           <div className="collapse-title text-lg font-medium cursor-grab">
@@ -199,18 +200,18 @@ export default function BeginnerQuestion() {
       </div>
 
       {/* CHECK ANSWER */}
-      <button onClick={handleCheckClick}>Check Answer</button>
+      <button onClick={handleCheckClick} className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg">Check Answer</button>
 
       <div>
         <h2>{alreadyAnswered ? <p>Already answered</p> : result}</h2>
       </div>
 
-      <div
+      {/* <div
         className="bg-black text-white p-5"
         style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}
-      >
+      > */}
         {checkClicked ? explanation : ""}
-      </div>
+      {/* </div> */}
     </>
   );
 }

@@ -69,7 +69,7 @@ nav a {
   }
 
   .nav-btn {
-    @apply hover:scale-110 transition duration-300 ease-in-out
+    @apply hover:scale-110 transition duration-300 ease-in-out opacity-70
   }
 
 .bg-overlay {
