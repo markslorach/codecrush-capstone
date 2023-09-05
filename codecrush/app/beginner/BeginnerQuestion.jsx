@@ -132,12 +132,12 @@ export default function BeginnerQuestion() {
     if (selectedAnswer === answer) {
       if (checkClicked) {
         if (correct) {
-          return "bg-green-100";
+          return "bg-green-200";
         } else {
-          return "bg-red-100";
+          return "bg-red-200";
         }
       } else {
-        return "bg-blue-100";
+        return "bg-blue-200";
       }
     }
   };
@@ -155,7 +155,7 @@ export default function BeginnerQuestion() {
       {/* CODE BOX */}
       <div className="flex justify-center min-w-full pt-5 pb-6">
         <Image
-          className="rounded-md border-4 border-gray-300 shadow-sm"
+          className="rounded-md shadow-md"
           src={Code}
           alt="Code"
           placeholder="blur"
@@ -170,21 +170,24 @@ export default function BeginnerQuestion() {
 
       {/* ANSWERS */}
       <h2 className="dash-heading">Select an answer</h2>
+      
       {beginnerAnswers.map((answer) => (
         <div key={answer.id}>
           <div
             value={answer.correct}
             onClick={(event) => handleAnswerClick(event, answer)}
-            className={`bg-white mb-6 w-100 p-3 rounded-md shadow-md ${setColour(answer)}`}
+            className={`bg-white mb-4 w-100 p-3 rounded-md shadow-md ${setColour(answer)}`}
           >
             {answer.answerText}
           </div>
         </div>
+        
       ))}
+    
 
       {/* HINT BOX */}
-      <div className="flex justify-center">
-        <div className="collapse bg-base-200 rounded-md">
+      <div className="flex justify-center ">
+        <div className="collapse bg-blue-100 rounded-md">
           <input type="checkbox" />
           <div className="collapse-title text-lg font-medium cursor-grab">
             Click for a hint
@@ -200,7 +203,7 @@ export default function BeginnerQuestion() {
       </div>
 
       {/* CHECK ANSWER */}
-      <button onClick={handleCheckClick} className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg">Check Answer</button>
+      <button onClick={handleCheckClick} className="p-3 text-white bg-gray-300 text-sm rounded-md">Check Answer</button>
 
       <div>
         <h2>{alreadyAnswered ? <p>Already answered</p> : result}</h2>
