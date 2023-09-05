@@ -30,12 +30,12 @@ export default function Dashboard() {
         <Avatar />
       </div>
 
-      <div className="p-3 bg-blue-100 rounded-md shadow-sm mb-5">
+      <div className="p-3 bg-blue-100 rounded-md shadow-sm mb-8 pl-5 pr-5">
         <CodingFacts />
       </div>
 
       {/* STATS */}
-      <h2 className="dash-heading">Stats</h2>
+      <h2 className="dash-heading">Your stats</h2>
       <div className="dash-stats-container">
         <div className="dash-stats-item">
           <p className="text-sm">Score</p>
@@ -71,7 +71,7 @@ export default function Dashboard() {
       <h2 className="dash-heading">Today's challenge</h2>
 
       {/* PYTHON CARD */}
-      <div className="flex place-content-between gap-5 mb-5">
+      <div className="flex place-content-between gap-5 mb-6">
         <button
           className="python-card"
           onClick={() => setIsPythonModalOpen(true)}
@@ -88,11 +88,6 @@ export default function Dashboard() {
           </p>
         </button>
 
-        <PythonDifficultySelect
-          isOpen={isPythonModalOpen}
-          setIsOpen={setIsPythonModalOpen}
-        />
-
         {/* JAVASCRIPT CARD */}
         <button className="js-card">
           <div className="avatar">
@@ -107,6 +102,11 @@ export default function Dashboard() {
           </p>
         </button>
       </div>
+
+      <PythonDifficultySelect
+          isOpen={isPythonModalOpen}
+          setIsOpen={setIsPythonModalOpen}
+        />
 
       <h2 className="dash-heading">Coming soon</h2>
 

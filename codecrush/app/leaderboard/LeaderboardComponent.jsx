@@ -20,26 +20,25 @@ export const LeaderboardComponent = () => {
   );
 
   const scoreLeaderboard = orderedUsers.map((user, index) => {
+    const firstName = user.username.split(" ")[0];
     return (
-      <>
-        <div key={index}>
-          <p>
-            {user.username} - {user.score}
-          </p>
-        </div>
-      </>
+      <div key={index}>
+        <p className="py-1">
+          {firstName} - {user.score}
+        </p>
+      </div>
     );
   });
 
   const streakLeaderboard = orderedUsers.map((user, index) => {
+    const firstName = user.username.split(" ")[0];
+
     return (
-      <>
-        <div key={index}>
-          <p>
-            {user.username} - {user.streak}
-          </p>
-        </div>
-      </>
+      <div key={index}>
+        <p className="py-1">
+          {firstName} - {user.streak}
+        </p>
+      </div>
     );
   });
 
@@ -47,11 +46,8 @@ export const LeaderboardComponent = () => {
     <>
       <h1 className="pb-8 text-xl font-semibold underline ">Leaderboard</h1>
 
-
-
       <div className="flex gap-3">
-
-      <div className="w-1/2">
+        <div className="w-1/2">
           <div>
             <div className="flex items-center gap-2 mb-5">
               <p className="font-semibold text-xl">Score</p>
@@ -61,11 +57,6 @@ export const LeaderboardComponent = () => {
             <div className="bg-red-100">{scoreLeaderboard}</div>
           </div>
         </div>
-
-
-
-
-      
 
         <div className="w-1/2">
           <div>
@@ -78,6 +69,34 @@ export const LeaderboardComponent = () => {
           </div>
         </div>
       </div>
+
+      <div className="overflow-x-auto">
+        <table className="table table-zebra">
+          {/* head */}
+
+          <tbody>
+            {/* row 1 */}
+            <tr>
+              <th>1</th>
+              <td>Cy Ganderton</td>
+              <td>Quality Control Specialist</td>
+            </tr>
+            {/* row 2 */}
+            <tr>
+              <th>2</th>
+              <td>Hart Hagerty</td>
+              <td>Desktop Support Technician</td>
+            </tr>
+            {/* row 3 */}
+            <tr>
+              <th>3</th>
+              <td>Brice Swyre</td>
+              <td>Tax Accountant</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       <BottomNav />
     </>
   );

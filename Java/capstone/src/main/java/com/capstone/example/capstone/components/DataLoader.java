@@ -30,13 +30,13 @@ public class DataLoader implements ApplicationRunner {
 
     public void run(ApplicationArguments args) {
 
-        User billy = new User(300, 999, "Billy Mitchell", "King of Kong");
-        userRepository.save(billy);
-        User josie = new User(0, 10, "Josie", "I'm just a Golden Retriever");
-        userRepository.save(josie);
-        User steve = new User(0, 0, "Steve Ballmer", "Developers developers developers develop...");
-        userRepository.save(steve);
-
+//        User billy = new User(43, 450, "Billy", "King of Kong");
+//        userRepository.save(billy);
+//        User josie = new User(21, 300, "Josie", "I'm just a Golden Retriever");
+//        userRepository.save(josie);
+//        User steve = new User(6, 120, "Steve", "Developers developers developers develop...");
+//        userRepository.save(steve);
+//
 //        //QUESTION 1
 //
 //        Question questionBeginner1 = new Question("What will the output be for: print(3 * 2)?", "You might have used a different symbol when you learned this in school", 1, 1, "We use '*' to multiply values, rather than 'x'");

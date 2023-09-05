@@ -26,7 +26,7 @@ export const CodingFacts = () => {
 
   return (
     <div>
-      <p className='text-center text-sm italic text-gray-500'>{factToShow}</p>
+      <p className='text-center text-sm italic text-gray-500 cursor-default'>{factToShow}</p>
     </div>
   )
 }

@@ -6,11 +6,12 @@ import LightDarkSwitch from "../components/LightDarkSwitch";
 import { Avatar } from "./Avatar";
 import { UserScore } from "./UserScore";
 import { UserStreak } from "./UserStreak";
+import { BottomNav } from "../components/BottomNav";
 
 
 export default function Profile() {
   return (
-    <main className="flex flex-col items-center justify-center">
+    <main className="flex flex-col items-center">
       <h2>Profile Page</h2>
       <Avatar/>
       <p>Score:</p><UserScore/>
@@ -18,6 +19,7 @@ export default function Profile() {
       <UserName />
       {/* <LightDarkSwitch /> */}
       <SignOut />
+      <BottomNav/>
     </main>
   );
 }
