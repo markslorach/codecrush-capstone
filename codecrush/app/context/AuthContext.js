@@ -71,8 +71,6 @@ const addUser = (newUser) => {
     })
 }
 
-
-
 return (
 <AuthContext.Provider value={{user, googleSignIn, logOut}}>{children}</AuthContext.Provider>)
 }

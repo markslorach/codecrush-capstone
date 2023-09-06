@@ -6,6 +6,7 @@ import Image from "next/image";
 import Code from "@/public/images/question_images/carbon.png";
 import Score from "@/public/images/score.png";
 import { UserScore } from "../profile/UserScore";
+import { motion } from "framer-motion";
 
 async function getQuestions() {
   const res = await fetch("http://localhost:8082/api/questions");
@@ -78,7 +79,7 @@ export default function BeginnerQuestion() {
       request
         .put(`http://localhost:8082/api/users/${user.uid}`, updateUser)
         .then(() => {
-          return setResult("You are correct!");
+          return setResult("Correct!");
         });
     } else if (correct === false) {
       const updateUser = {
@@ -94,7 +95,7 @@ export default function BeginnerQuestion() {
       request
         .put(`http://localhost:8082/api/users/${user.uid}`, updateUser)
         .then(() => {
-          return setResult("You are wrong");
+          return setResult("Incorrect");
         });
     } else {
       return setResult("Please select an answer");
@@ -170,9 +171,9 @@ export default function BeginnerQuestion() {
       </div>
 
       {/* CODE BOX */}
-      <div className="flex justify-center min-w-full pt-5 pb-6">
+      <div className="flex justify-center min-w-full pt-5 pb-2">
         <Image
-          className="rounded-md shadow-md"
+          className="rounded-md shadow-lg"
           src={Code}
           alt="Code"
           placeholder="blur"
@@ -181,38 +182,50 @@ export default function BeginnerQuestion() {
 
       {beginnerQuestions.map((question) => (
         <div
-          className="p-3 bg-blue-100 rounded-md shadow-sm mb-6"
+          className="p-3 bg-blue-100 rounded-md shadow-sm mb-10"
           key={question.id}
         >
-          <p className="text-base">{question.questionText}</p>
+          <p className="text-sm font-medium">{question.questionText}</p>
         </div>
       ))}
 
       {/* ANSWERS */}
-      <h2 className="dash-heading">Select an answer</h2>
-
-      {beginnerAnswers.map((answer) => (
-        <div key={answer.id}>
-          <button
-            value={answer.correct}
-            onClick={(event) => handleAnswerClick(event, answer)}
-            className={`mb-4 min-w-full text-left p-3 rounded-md shadow-md bg-white ${setColour(
-              answer
-            )}`}
-          >
-            {answer.answerText}
-          </button>
+      <section className="mb-5">
+        <div className="flex flex-row gap-2 items-center my-4">
+          <div className="avatar placeholder">
+            <div className="bg-gray-600 text-white rounded-full w-4">
+              <span className="text-xs">i</span>
+            </div>
+          </div>
+          <h2 className="flex items-center text-sm">Select an answer</h2>
         </div>
-      ))}
+
+        {beginnerAnswers.map((answer) => (
+          <div key={answer.id}>
+            <button
+              value={answer.correct}
+              onClick={(event) => handleAnswerClick(event, answer)}
+              className={`mb-4 min-w-full text-left text-sm font-medium p-3 rounded-md shadow-md bg-white ${setColour(
+                answer
+              )}`}
+            >
+              {answer.answerText}
+            </button>
+          </div>
+        ))}
+      </section>
+
+   
+      <div className="text-center text-lg mt-4">{result}</div>
+
 
       {/* HINT BOX */}
-      <div className="flex justify-center ">
-        <div className="collapse bg-blue-100 rounded-md">
-          <input type="checkbox" />
-          <div className="collapse-title text-lg font-medium cursor-grab">
-            Click for a hint
-          </div>
-          <div className="collapse-content">
+      <details className="collapse bg-blue-100 rounded-md shadow-sm">
+        <summary className="collapse-title text-base font-normal p-5">
+          Need a hint?
+        </summary>
+        <div className="collapse-content text-sm italic">
+          <div>
             {beginnerQuestions.map((question) => (
               <div key={question.id}>
                 <p>{question.hintText}</p>
@@ -220,28 +233,24 @@ export default function BeginnerQuestion() {
             ))}
           </div>
         </div>
-      </div>
+      </details>
 
       {/* CHECK ANSWER */}
-      <div className="min-w-full bg-gray-200 fixed bottom-0 left-0 flex justify-center p-8 rounded-t-md border-t-2 border-gray-100">
+      <div className="min-w-full bg-blue-100 fixed bottom-0 left-0 flex justify-center p-8 rounded-t-md border-t-2 border-gray-100">
         <button
           onClick={handleCheckClick}
           className="p-3 w-full bg-white rounded-md shadow-sm font-semibold"
         >
-          Check Answer
+          {alreadyAnswered ? "Already answered" : "Check Answer"}
         </button>
       </div>
 
-      <div>
-        <h2>{alreadyAnswered ? <p>Already answered</p> : result}</h2>
-      </div>
-
-      {/* <div
-        className="bg-black text-white p-5"
-        style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}
-      > */}
-      {checkClicked ? explanation : ""}
-      {/* </div> */}
+      <motion.div
+        initial={{ height: 0, opacity: 0, overflow: "hidden" }}
+        animate={checkClicked ? { height: "auto", opacity: 1 } : {}}
+        transition={{ duration: 0.4 }}>
+        <p>{explanation}</p>
+      </motion.div>
     </>
   );
 }
