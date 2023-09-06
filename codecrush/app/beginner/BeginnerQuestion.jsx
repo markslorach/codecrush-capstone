@@ -134,9 +134,9 @@ export default function BeginnerQuestion() {
     if (selectedAnswer === answer) {
       if (checkClicked) {
         if (correct) {
-          return "bg-green-200";
+          return "text-green-200";
         } else {
-          return "bg-red-200";
+          return "text-red-200";
         }
       } else {
         return "text-blue-200";
@@ -146,10 +146,10 @@ export default function BeginnerQuestion() {
 
   return (
     <>
-      <div className="flex place-content-between">
+      <div className="flex place-content-between py-5 mt-5">
         <Link className="flex flex-col justify-center" href="/dashboard">
           <button className=" hover:text-gray-500">
-            <b>X</b>
+            <b className="text-lg">X</b>
           </button>
         </Link>
 

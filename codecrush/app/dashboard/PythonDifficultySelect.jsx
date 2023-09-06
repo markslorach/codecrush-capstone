@@ -2,7 +2,25 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
+const overlayAnimation = {
+  initial: { opacity: 0 },
+  animate: { opacity: 0.5 },
+  exit: { opacity: 0 },
+  transition: { duration: 0.7, ease: "easeInOut" },
+};
+
+const difficultySelectAnimation = {
+  initial: { y: "100vh", opacity: 0 },
+  animate: { y: 0, opacity: 1 },
+  exit: { y: "100vh", opacity: 0 },
+  transition: { duration: 0.6, ease: "easeInOut" },
+};
+
 export const PythonDifficultySelect = ({ isOpen, setIsOpen }) => {
+  const closeSelect = () => {
+    setIsOpen(false);
+  };
+
   return (
     <main>
       <AnimatePresence>
@@ -10,24 +28,18 @@ export const PythonDifficultySelect = ({ isOpen, setIsOpen }) => {
           <div>
             <motion.div
               className="bg-overlay"
-              onClick={() => setIsOpen(false)}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.5 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.7, ease: "easeInOut" }}
+              onClick={closeSelect}
+              {...overlayAnimation}
             ></motion.div>
 
             <motion.div
               className="difficulty-select"
-              initial={{ y: "100vh", opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: "100vh", opacity: 0 }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
+              {...difficultySelectAnimation}
             >
               <div className="p-8 pt-6">
                 <button
                   className="pb-5 hover:text-gray-500"
-                  onClick={() => setIsOpen(false)}
+                  onClick={closeSelect}
                 >
                   <b>X</b>
                 </button>

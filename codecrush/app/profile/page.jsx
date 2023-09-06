@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { motion } from "framer-motion";
 import { SignOut } from "./SignOut";
 import LightDarkSwitch from "../components/LightDarkSwitch";
 import { UserScore } from "./UserScore";
@@ -13,18 +14,24 @@ import Score from "@/public/images/score.png";
 import Trophy from "@/public/images/trophy.png";
 import Dark from "@/public/images/darkmode.png";
 
+const sectionAnimation = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  transition: { duration: 0.5, ease: "easeIn" }, // Set the duration to 0.4 seconds and ease to easeInOut
+};
+
 export default function Profile() {
   return (
     <main className="p-8 min-h-screen">
       <div className="flex place-content-between mt-4 mb-6">
         <h2 className="py-8 text-xl font-semibold">Profile Page</h2>
         <div className="flex items-center">
-        <Image className="opacity-70 mr-2" src={Dark} alt="Trophy" width={25} height={25} />
+          <Image className="opacity-70 mr-2" src={Dark} alt="Trophy" width={25} height={25} />
           <LightDarkSwitch />
         </div>
       </div>
 
-      <section className="flex justify-center">
+      <motion.section className="flex justify-center" {...sectionAnimation}>
         <div className="min-w-full max-w-sm bg-white shadow-md rounded-md py-10 bg-gradient-to-r from-red-100 to-blue-100 ...">
           <div className="flex justify-end"></div>
           <div className="flex flex-col items-center gap-2">
@@ -70,7 +77,7 @@ export default function Profile() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       <BottomNav />
     </main>
