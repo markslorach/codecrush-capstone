@@ -8,7 +8,7 @@ export const UserName = () => {
   return (
     <>
     {!user ? (<p> You are logged out</p>) : (
-        <p className='font-semibold'>{user[0].username}{' '}<span className="wave">👋</span></p>
+        <p className='font-semibold'>{user[0].username}{' '}</p>
     )}
     </>
   )

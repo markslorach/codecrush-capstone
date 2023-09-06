@@ -26,5 +26,5 @@ export const DayDate = () => {
       break;
   }
 
-  return <h2 className="text-sm text-gray-500 mb-3 italic">{`${dayOfWeek} ${dayOfMonth}${ordinalIndicator} ${month}`}</h2>;
+  return <h2 className="text-sm text-gray-500 mb-3">{`${dayOfWeek} ${dayOfMonth}${ordinalIndicator} ${month}`}</h2>;
 };

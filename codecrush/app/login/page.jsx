@@ -9,7 +9,6 @@ export default function login() {
  <div className="flex items-center justify-center h-screen">
   <LoginComponent />
 </div>
-
     </main>
   )
 }

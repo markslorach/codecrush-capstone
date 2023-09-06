@@ -8,7 +8,7 @@ import Leader from "@/public/images/dash_leader.png";
 
 export const BottomNav = () => {
   return (
-<div className="btm-nav bg-blue-100 rounded-t-md border-t-2 border-gray-100">
+<div className="btm-nav bg-blue-100 rounded-t-lg">
 <Link href="/dashboard">
   <button className='nav-btn'>
   <Image src={Dashboard} alt="Dashboard" width={19} height={19} />
