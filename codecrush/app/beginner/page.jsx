@@ -1,13 +1,19 @@
 "use client";
 import React from "react";
+import { motion } from "framer-motion";
 import BeginnerQuestion from "./BeginnerQuestion";
-import { DayDate } from "../components/DayDate";
-import { UserScore } from "../profile/UserScore";
 
 export default function Beginner() {
   return (
-    <main className="p-8 min-h-screen min-w-full w-1/2">
-      <BeginnerQuestion />
+    <main className="p-8 min-h-screen min-w-full relative">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.1 }}
+      >
+        <BeginnerQuestion />
+      </motion.div>
     </main>
   );
 }
+

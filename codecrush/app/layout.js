@@ -8,7 +8,7 @@ const poppins = Poppins({ subsets: ["latin"], weight: ["100", "200", "300", "400
 export default function RootLayout({ children }) {
   return (
     <html>
-      <body className={`${poppins.className} min-h-screen bg-gradient-to-r from-red-50 to-slate-50 ...`}>
+      <body className={`${poppins.className} min-h-screen`}>
         <AuthContextProvider>
           {children}
         </AuthContextProvider>
@@ -16,3 +16,5 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
+// bg-gradient-to-r from-red-50 to-slate-50 ...

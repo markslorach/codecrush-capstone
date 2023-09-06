@@ -188,6 +188,7 @@ export default function BeginnerQuestion() {
           <p className="text-sm font-medium">{question.questionText}</p>
         </div>
       ))}
+      
 
       {/* ANSWERS */}
       <section className="mb-5">
@@ -235,6 +236,8 @@ export default function BeginnerQuestion() {
         </div>
       </details>
 
+      <div className="bg-slate-50 min-w-full h-[59.9rem] -z-10 absolute left-0 bottom-0 rounded-t-lg mt-4 shadow-lg "></div>
+
       {/* CHECK ANSWER */}
       <div className="min-w-full bg-blue-100 fixed bottom-0 left-0 flex justify-center p-8 rounded-t-md border-t-2 border-gray-100">
         <button
@@ -251,6 +254,8 @@ export default function BeginnerQuestion() {
         transition={{ duration: 0.4 }}>
         <p>{explanation}</p>
       </motion.div>
+
+
     </>
   );
 }
