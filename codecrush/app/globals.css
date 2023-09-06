@@ -82,3 +82,15 @@ nav a {
   z-index: 9; 
 }
 
+.gold-card {
+  @apply hover:bg-amber-400 transition duration-300 ease-in-out hover:scale-105
+}
+
+.silver-card {
+  @apply hover:bg-slate-200 transition duration-300 ease-in-out hover:scale-105
+}
+
+.bronze-card {
+  @apply hover:bg-orange-300 transition duration-300 ease-in-out hover:scale-105
+}
+
