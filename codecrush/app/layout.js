@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import "./globals.css";
 import { Poppins } from "next/font/google";
 import { AuthContextProvider } from "./context/AuthContext";
@@ -9,12 +9,14 @@ export default function RootLayout({ children }) {
   return (
     <html>
       <body className={`${poppins.className} min-h-screen bg-slate-50`}>
+  
         <AuthContextProvider>
           {children}
         </AuthContextProvider>
+       
       </body>
     </html>
   );
 }
 
-// bg-gradient-to-r from-red-50 to-slate-50 ...
+// data-theme="dark

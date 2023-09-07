@@ -30,7 +30,7 @@
 }
 
   .dash-heading {
-    @apply mb-5 font-semibold
+    @apply mb-5 font-semibold text-gray-700
   }
 
   .dash-stats-container {
@@ -38,7 +38,7 @@
   }
 
   .dash-stats-item {
-    @apply flex flex-col items-center justify-center
+    @apply flex flex-col items-center justify-center text-gray-700
   }
 
   .coding-fact-box {
@@ -46,7 +46,7 @@
   }
 
   .code-card-avatar {
-    @apply w-16 rounded-full p-2 bg-slate-50
+    @apply w-16 rounded-full p-2 bg-slate-100
   }
 
   .card-description {
@@ -54,19 +54,19 @@
   }
 
   .python-card {
-    @apply flex flex-col gap-2 items-center bg-white rounded-md shadow-md py-5 pl-3 pr-3 w-1/2 hover:bg-blue-100 transition duration-300 ease-in-out hover:scale-105
+    @apply flex flex-col gap-2 items-center text-gray-700 bg-white rounded-md shadow-md py-5 pl-3 pr-3 w-1/2 hover:bg-blue-100 transition duration-300 ease-in-out hover:scale-105
   }
 
   .js-card {
-    @apply flex flex-col gap-2 items-center bg-white rounded-md shadow-md py-5 pl-3 pr-3 w-1/2 hover:bg-yellow-100 transition duration-300 ease-in-out hover:scale-105
+    @apply flex flex-col gap-2 items-center text-gray-700 bg-white rounded-md shadow-md py-5 pl-3 pr-3 w-1/2 hover:bg-yellow-100 transition duration-300 ease-in-out hover:scale-105
   }
 
   .java-card {
-    @apply flex flex-col gap-2 items-center bg-white rounded-md shadow-md py-5 pl-3 pr-3 w-1/2
+    @apply flex flex-col gap-2 items-center text-gray-700 bg-white rounded-md shadow-md py-5 pl-3 pr-3 w-1/2
   }
 
   .c-card {
-    @apply flex flex-col gap-2 items-center bg-white rounded-md shadow-md py-5 pl-3 pr-3 w-1/2
+    @apply flex flex-col gap-2 items-center text-gray-700 bg-white rounded-md shadow-md py-5 pl-3 pr-3 w-1/2
   }
 
   .difficulty-select {

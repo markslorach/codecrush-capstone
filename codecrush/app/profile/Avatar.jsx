@@ -8,7 +8,7 @@ export const Avatar = () => {
   return (
     <Link href="/profile" className="flex items-center cursor-grab">
         <div className="avatar placeholder">
-          <div className="bg-neutral-focus text-neutral-content rounded-full w-10 h-10">
+          <div className="bg-gray-700 text-slate-50 rounded-full w-10 h-10">
             <span className="text-xl">
               {user && user[0].username ? user[0].username.charAt(0) : ""}
             </span>
