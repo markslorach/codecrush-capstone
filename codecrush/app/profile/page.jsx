@@ -25,10 +25,10 @@ export default function Profile() {
   return (
     <main className="main">
       <div className="flex place-content-between mt-4 mb-6">
-        <h2 className="py-8 text-xl font-semibold">Profile Page</h2>
+        <h2 className="py-8 text-xl font-semibold text-gray-700">Profile Page</h2>
         <div className="flex items-center">
           <Image className="opacity-70 mr-2" src={Dark} alt="Trophy" width={25} height={25} />
-          <LightDarkSwitch />
+          {/* <LightDarkSwitch /> */}
         </div>
       </div>
 

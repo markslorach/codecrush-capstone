@@ -49,13 +49,13 @@ export const LeaderboardComponent = () => {
     <>
       <section className="flex place-content-between mt-4 mb-6">
         <div className="flex">
-          <h2 className="py-8 text-xl font-semibold">Leaderboard</h2>
+          <h2 className="py-8 text-xl font-semibold text-gray-700">Leaderboard</h2>
         </div>
         
         <div className="flex items-center">
           <div className="bg-slate-200 rounded-full py-1 px-3">
             <div className="flex items-center gap-2">
-              <b>
+              <b className="text-gray-700">
                 <UserScore />
               </b>
               <Image
