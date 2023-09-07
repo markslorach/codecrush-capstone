@@ -31,8 +31,15 @@ export default function BeginnerQuestion() {
   const [explanation, setExplanation] = useState("");
   const [showExplanation, setShowExplanation] = useState(false);
   const [buttonText, setButtonText] = useState("Check Answer");
-
+  const [answerCorrect, setAnswerCorrect] = useState(false);
+  const [score, setScore] = useState(0);
   const { user } = UserAuth();
+
+  useEffect(() => {
+    if (user) {
+      setScore(user[0].score);
+    }
+  }, [user]);
 
   useEffect(() => {
     async function getData() {
@@ -68,11 +75,17 @@ export default function BeginnerQuestion() {
     }
   };
 
+  const newScore = score + 10;
+
   const checkAnswer = () => {
+    console.log(correct)
     if (correct === true) {
+      setScore(newScore)
+
+
       const updateUser = {
         streak: user[0].streak + 1,
-        score: user[0].score + 10,
+        score: newScore,
         username: user[0].username,
         uid: user[0].uid,
         id: user[0].id,
@@ -84,6 +97,7 @@ export default function BeginnerQuestion() {
         .then(() => {
           setButtonText("Correct!");
         });
+        setAnswerCorrect(true)
     } else if (correct === false) {
       const updateUser = {
         streak: 0,
@@ -119,6 +133,7 @@ export default function BeginnerQuestion() {
   };
 
   const handleCheckClick = () => {
+
     if (
       user[0].uid &&
       beginnerQuestions[0].haveAnswered.includes(user[0].uid)
@@ -161,7 +176,10 @@ export default function BeginnerQuestion() {
         <div className="bg-slate-200 rounded-full py-1 px-3">
           <div className="flex items-center gap-2">
             <b>
-            <UserScore/>
+            {/* <UserScore/> */}
+
+            {!answerCorrect && score}
+            {answerCorrect && score}
               
             </b>
             <Image
