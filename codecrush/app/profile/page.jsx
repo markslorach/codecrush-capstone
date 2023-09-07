@@ -13,6 +13,7 @@ import Streak from "@/public/images/streak.png";
 import Score from "@/public/images/score.png";
 import Trophy from "@/public/images/trophy.png";
 import Dark from "@/public/images/darkmode.png";
+import { UserRank } from "./UserRank";
 
 const sectionAnimation = {
   initial: { opacity: 0 },
@@ -27,7 +28,7 @@ export default function Profile() {
         <h2 className="py-8 text-xl font-semibold">Profile Page</h2>
         <div className="flex items-center">
           <Image className="opacity-70 mr-2" src={Dark} alt="Trophy" width={25} height={25} />
-          {/* <LightDarkSwitch /> */}
+          <LightDarkSwitch />
         </div>
       </div>
 
@@ -64,9 +65,9 @@ export default function Profile() {
               <div className="dash-stats-item">
                 <p className="text-sm">Leaderboard</p>
                 <div className="flex items-center gap-2">
-                  <p>
-                    <b>0</b>
-                  </p>
+                  
+                    <UserRank/>
+                  
                   <Image src={Trophy} alt="Trophy" width={16} height={16} />
                 </div>
               </div>

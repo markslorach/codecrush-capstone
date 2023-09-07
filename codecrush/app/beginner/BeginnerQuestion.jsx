@@ -16,6 +16,11 @@ async function getAnswers() {
   return res.json();
 }
 
+async function getUsers() {
+  const res = await fetch("http://localhost:8082/api/users");
+  return res.json();
+}
+
 export default function BeginnerQuestion() {
   const [beginnerQuestions, setBeginnerQuestions] = useState([]);
   const [beginnerAnswers, setBeginnerAnswers] = useState([]);
@@ -48,6 +53,7 @@ export default function BeginnerQuestion() {
         );
       });
       setBeginnerAnswers(beginnerAnswers);
+
     }
 
     getData();
@@ -71,7 +77,6 @@ export default function BeginnerQuestion() {
         uid: user[0].uid,
         id: user[0].id,
       };
-      console.log(updateUser);
 
       const request = new Request();
       request
@@ -87,7 +92,6 @@ export default function BeginnerQuestion() {
         uid: user[0].uid,
         id: user[0].id,
       };
-      console.log(updateUser);
 
       const request = new Request();
       request
@@ -126,7 +130,6 @@ export default function BeginnerQuestion() {
       logAttempt();
       updateQuestion();
       setShowExplanation(true);
-      console.log(user[0]);
     }
   };
 
@@ -158,7 +161,8 @@ export default function BeginnerQuestion() {
         <div className="bg-slate-200 rounded-full py-1 px-3">
           <div className="flex items-center gap-2">
             <b>
-              <UserScore />
+            <UserScore/>
+              
             </b>
             <Image
               className="mb-1"

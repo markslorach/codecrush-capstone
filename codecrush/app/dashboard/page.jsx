@@ -69,10 +69,7 @@ export default function Dashboard() {
         <div className="dash-stats-item">
           <p className="text-sm">Leaderboard</p>
           <div className="flex items-center gap-2">
-            
-            <p>
               <UserRank/>
-            </p>
             <Image src={Trophy} alt="Trophy" width={16} height={16} />
           </div>
         </div>
