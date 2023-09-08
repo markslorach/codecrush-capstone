@@ -8,7 +8,7 @@ export const DashAvatar = () => {
   return (
     <Link href="/profile" className="flex items-center cursor-grab">
         <div className="avatar placeholder">
-          <div className="bg-neutral-focus text-neutral-content rounded-full w-16 h-16">
+          <div className="bg-slate-700 text-slate-200 rounded-full w-16 h-16">
             <span className="text-xl">
               {user && user[0].username ? user[0].username.charAt(0) : ""}
             </span>

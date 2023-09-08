@@ -4,9 +4,9 @@ import Image from "next/image";
 import { BottomNav } from "../components/BottomNav";
 import Score from "@/public/images/score.png";
 import Trophy from "@/public/images/trophy.png";
-import bronzecup from "@/public/images/bronzecup.png";
-import slivercup from "@/public/images/silvercup.png";
-import goldcup1 from "@/public/images/goldcup1.png";
+import bronzecup from "@/public/images/bronzecup.svg";
+import silvercup from "@/public/images/trophysilver.svg";
+import goldcup1 from "@/public/images/trophy.svg";
 import { UserScore } from "../profile/UserScore";
 
 export const LeaderboardComponent = () => {
@@ -38,9 +38,9 @@ export const LeaderboardComponent = () => {
 
     return (
       <tr key={index}>
-        <td>{index + 1}</td>
-        <td>{firstName}</td>
-        <td>{user.score}</td>
+        <td className="text-slate-900"><b>{index + 1}</b></td>
+        <td className="text-slate-900">{firstName}</td>
+        <td className="text-slate-900">{user.score}</td>
       </tr>
     );
   });
@@ -49,7 +49,7 @@ export const LeaderboardComponent = () => {
     <>
       <section className="flex place-content-between mt-4 mb-6">
         <div className="flex">
-          <h2 className="py-8 text-xl font-semibold text-gray-700">Leaderboard</h2>
+          <h2 className="py-8 text-xl font-semibold text-gray-700 dark:text-slate-200">Leaderboard</h2>
         </div>
         
         <div className="flex items-center">
@@ -76,7 +76,7 @@ export const LeaderboardComponent = () => {
         {/* player 1 card */}
         <section className="c-card gold-card">
           <div className="avatar">
-            <div className="w-14 rounded-full p-2 bg-slate-50">
+            <div className="w-14 rounded-full p-2 bg-slate-50 dark:bg-slate-700">
               <Image src={goldcup1} alt="Trophy Gold" width={16} height={16} />
             </div>
           </div>
@@ -86,9 +86,9 @@ export const LeaderboardComponent = () => {
         {/* player 2 card */}
         <section className="c-card silver-card">
           <div className="avatar">
-            <div className="w-14 rounded-full p-2 bg-slate-50">
+            <div className="w-14 rounded-full p-2 bg-slate-50 dark:bg-slate-700">
               <Image
-                src={slivercup}
+                src={silvercup}
                 alt="Trophy Silver"
                 width={16}
                 height={16}
@@ -101,7 +101,7 @@ export const LeaderboardComponent = () => {
         {/* player 3 card */}
         <section className="c-card bronze-card">
           <div className="avatar">
-            <div className="w-14 rounded-full p-2 bg-slate-50">
+            <div className="w-14 rounded-full p-2 bg-slate-50 dark:bg-slate-700">
               <Image
                 src={bronzecup}
                 alt="Trophy Bronze"
@@ -116,17 +116,21 @@ export const LeaderboardComponent = () => {
 
 
       {/* TABLE */}
-      <table className="table table-zebra shadow-md">
+      <table className="table shadow-md rounded-md mt-4 bg-slate-200">
         <thead>
-          <tr>
-            <th className="flex gap-2">
+          <tr className="bg-slate-300">
+            <th className="flex gap-2 text-slate-900 text-sm">
               Rank
+              <div className="flex items-center">
               <Image src={Trophy} alt="Trophy" width={14} height={14} />
+              </div>
             </th>
-            <th>Player</th>
-            <th className="flex gap-2">
+            <th className="text-slate-900 text-sm">Player</th>
+            <th className="flex gap-2 text-slate-900 text-sm">
               Score
+              <div className="flex items-center">
               <Image src={Score} alt="Score" width={14} height={14} />
+              </div>
             </th>
           </tr>
         </thead>

@@ -39,5 +39,5 @@ if (user) {
 }
 };
 
-return <p>{rank}</p>
+return <p><b>{rank}</b></p>
 };

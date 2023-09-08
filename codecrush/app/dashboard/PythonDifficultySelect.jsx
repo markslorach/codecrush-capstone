@@ -38,7 +38,7 @@ export const PythonDifficultySelect = ({ isOpen, setIsOpen }) => {
             >
               <div className="p-8 pt-6">
                 <button
-                  className="pb-5 hover:text-gray-500"
+                  className="pb-5 hover:text-gray-500 dark:text-slate-400 dark:hover:text-slate-500"
                   onClick={closeSelect}
                 >
                   <b>X</b>
@@ -46,17 +46,17 @@ export const PythonDifficultySelect = ({ isOpen, setIsOpen }) => {
 
                 <div className="flex flex-col gap-6">
                   <Link href="/beginner">
-                    <button className="difficulty-btn hover:bg-green-100">
+                    <button className="difficulty-btn hover:bg-green-100 dark:hover:bg-slate-200">
                       Beginner
                     </button>
                   </Link>
                   <Link href="/intermediate">
-                    <button className="difficulty-btn hover:bg-orange-100">
+                    <button className="difficulty-btn hover:bg-orange-100 dark:hover:bg-slate-200">
                       Intermediate
                     </button>
                   </Link>
                   <Link href="/advanced">
-                    <button className="difficulty-btn hover:bg-red-100">
+                    <button className="difficulty-btn hover:bg-red-100 dark:hover:bg-slate-200">
                       Advanced
                     </button>
                   </Link>

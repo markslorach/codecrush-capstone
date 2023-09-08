@@ -28,7 +28,7 @@ export default function Dashboard() {
       {/* WELCOME */}
       <div className="flex place-content-between">
         <div className="py-8 text-xl">
-          <p className="text-base text-gray-500">Hello,</p>
+          <p className="text-base text-gray-500 dark:text-slate-200 dark:opacity-70">Hello,</p>
           <div className="flex">
             <UserName />
             <span className="wave ml-2">👋</span>
@@ -89,7 +89,7 @@ export default function Dashboard() {
             </div>
           </div>
 
-          <h3 className="text-center my-0 font-semibold">Python</h3>
+          <h3 className="text-center my-0 font-semibold dark:text-slate-200">Python</h3>
           <p className="card-description">
             Test your skills in today's Python challenge.
           </p>
@@ -103,7 +103,7 @@ export default function Dashboard() {
             </div>
           </div>
 
-          <h3 className="text-center my-0 font-semibold">JavaScript</h3>
+          <h3 className="text-center my-0 font-semibold dark:text-slate-200">JavaScript</h3>
           <p className="card-description">
             Think you can take on today's JavaScript challenge?
           </p>
@@ -126,7 +126,7 @@ export default function Dashboard() {
             </div>
           </div>
 
-          <h3 className="text-center my-0 font-semibold">Java</h3>
+          <h3 className="text-center my-0 font-semibold dark:text-slate-200">Java</h3>
         </div>
 
         {/* C# CARD */}
@@ -137,7 +137,7 @@ export default function Dashboard() {
             </div>
           </div>
 
-          <h3 className="text-center my-0 font-semibold">C#</h3>
+          <h3 className="text-center my-0 font-semibold dark:text-slate-200">C#</h3>
         </div>
       </div>
 

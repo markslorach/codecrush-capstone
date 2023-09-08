@@ -7,13 +7,13 @@ import { UserScore } from "./UserScore";
 import { UserStreak } from "./UserStreak";
 import { BottomNav } from "../components/BottomNav";
 import { DashAvatar } from "../dashboard/DashAvatar";
-import { UserName } from "../dashboard/UserName";
 import Image from "next/image";
 import Streak from "@/public/images/streak.png";
 import Score from "@/public/images/score.png";
 import Trophy from "@/public/images/trophy.png";
-import Dark from "@/public/images/darkmode.png";
+import Dark from "@/public/images/dark.svg";
 import { UserRank } from "./UserRank";
+import { ProfileUserName } from "./ProfileUserName";
 
 const sectionAnimation = {
   initial: { opacity: 0 },
@@ -25,23 +25,23 @@ export default function Profile() {
   return (
     <main className="main">
       <div className="flex place-content-between mt-4 mb-6">
-        <h2 className="py-8 text-xl font-semibold text-gray-700">Profile Page</h2>
+        <h2 className="py-8 text-xl font-semibold text-gray-700 dark:text-slate-200">Profile Page</h2>
         <div className="flex items-center">
-          <Image className="opacity-70 mr-2" src={Dark} alt="Trophy" width={25} height={25} />
-          {/* <LightDarkSwitch /> */}
+          
+          <LightDarkSwitch />
         </div>
       </div>
 
       <motion.section className="flex justify-center" {...sectionAnimation}>
-        <div className="min-w-full max-w-sm bg-white shadow-md rounded-md py-10 bg-gradient-to-r from-red-100 to-blue-100 ...">
+      <div className="min-w-full max-w-sm bg-white shadow-md dark:shadow-gray-600 rounded-md py-10 bg-gradient-to-r from-red-100 to-blue-100 dark:from-slate-300 dark:to-slate-100 ...">
           <div className="flex justify-end"></div>
           <div className="flex flex-col items-center gap-2">
             <DashAvatar />
-            <h5 className="mb-1 text-xl font-medium text-gray-800 ">
-              <UserName />
-            </h5>
+            <h2 className="mb-1 text-xl font-medium">
+              <ProfileUserName/>
+            </h2>
 
-            <div className="flex place-content-between w-5/6 my-6 p-4 bg-white rounded-md shadow-md">
+            <div className="flex place-content-between w-5/6 my-6 p-4 bg-white rounded-md shadow-md dark:bg-slate-700 dark:shadow-gray-800">
               <div className="dash-stats-item">
                 <p className="text-sm">Score</p>
                 <div className="flex items-center gap-2">

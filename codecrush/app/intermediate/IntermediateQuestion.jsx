@@ -16,6 +16,11 @@ async function getAnswers() {
   return res.json();
 }
 
+async function getUsers() {
+  const res = await fetch("http://localhost:8082/api/users");
+  return res.json();
+}
+
 export default function IntermediateQuestion() {
   const [intermediateQuestions, setIntermediateQuestions] = useState([]);
   const [intermediateAnswers, setIntermediateAnswers] = useState([]);
@@ -26,8 +31,15 @@ export default function IntermediateQuestion() {
   const [explanation, setExplanation] = useState("");
   const [showExplanation, setShowExplanation] = useState(false);
   const [buttonText, setButtonText] = useState("Check Answer");
-
+  const [answerCorrect, setAnswerCorrect] = useState(false);
+  const [score, setScore] = useState(0);
   const { user } = UserAuth();
+
+  useEffect(() => {
+    if (user) {
+      setScore(user[0].score);
+    }
+  }, [user]);
 
   useEffect(() => {
     async function getData() {
@@ -44,11 +56,11 @@ export default function IntermediateQuestion() {
       const answers = await getAnswers();
       const intermediateAnswers = answers.filter((answer) => {
         return intermediateQuestions.some(
-          (intermediateQuestion) =>
-            intermediateQuestion.id === answer.question.id
+          (intermediateQuestion) => intermediateQuestion.id === answer.question.id
         );
       });
       setIntermediateAnswers(intermediateAnswers);
+
     }
 
     getData();
@@ -63,16 +75,21 @@ export default function IntermediateQuestion() {
     }
   };
 
+  const newScore = score + 10;
+
   const checkAnswer = () => {
+    console.log(correct)
     if (correct === true) {
+      setScore(newScore)
+
+
       const updateUser = {
         streak: user[0].streak + 1,
-        score: user[0].score + 10,
+        score: newScore,
         username: user[0].username,
         uid: user[0].uid,
         id: user[0].id,
       };
-      console.log(updateUser);
 
       const request = new Request();
       request
@@ -80,6 +97,7 @@ export default function IntermediateQuestion() {
         .then(() => {
           setButtonText("Correct!");
         });
+        setAnswerCorrect(true)
     } else if (correct === false) {
       const updateUser = {
         streak: 0,
@@ -88,7 +106,6 @@ export default function IntermediateQuestion() {
         uid: user[0].uid,
         id: user[0].id,
       };
-      console.log(updateUser);
 
       const request = new Request();
       request
@@ -116,6 +133,7 @@ export default function IntermediateQuestion() {
   };
 
   const handleCheckClick = () => {
+
     if (
       user[0].uid &&
       intermediateQuestions[0].haveAnswered.includes(user[0].uid)
@@ -127,7 +145,6 @@ export default function IntermediateQuestion() {
       logAttempt();
       updateQuestion();
       setShowExplanation(true);
-      console.log(user[0]);
     }
   };
 
@@ -153,13 +170,17 @@ export default function IntermediateQuestion() {
             <b className="text-lg">X</b>
           </button>
         </Link>
-
+        
         <h2 className="flex items-center ml-10 font-semibold text-lg">Intermediate</h2>
 
         <div className="bg-slate-200 rounded-full py-1 px-3">
           <div className="flex items-center gap-2">
             <b>
-              <UserScore />
+            {/* <UserScore/> */}
+
+            {!answerCorrect && score}
+            {answerCorrect && score}
+              
             </b>
             <Image
               className="mb-1"
@@ -257,7 +278,7 @@ export default function IntermediateQuestion() {
         </details>
       )}
 
-      {/* <div className="bg-slate-50 min-w-full h-[59.9rem] -z-10 absolute left-0 bottom-0 rounded-t-lg mt-4 shadow-lg "></div> */}
+      {/* <div className="bg-slate-50 min-w-full h-[59.9rem] -z-10 absolute left-0 bottom-0 rounded-t-lg mt-4 shadow-lg border-t-4 border-gray-300 "></div> */}
 
       <div className="min-w-full bg-blue-100 fixed bottom-0 left-0 flex justify-center p-8 rounded-t-md border-t-2 border-gray-100">
         <button

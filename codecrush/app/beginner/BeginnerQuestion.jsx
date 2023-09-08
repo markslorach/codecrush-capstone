@@ -24,7 +24,7 @@ async function getUsers() {
 export default function BeginnerQuestion() {
   const [beginnerQuestions, setBeginnerQuestions] = useState([]);
   const [beginnerAnswers, setBeginnerAnswers] = useState([]);
-  const [correct, setCorrect] = useState(null);
+  const [correct, setCorrect] = useState(true);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [checkClicked, setCheckClicked] = useState(false);
   const [alreadyAnswered, setAlreadyAnswered] = useState(false);
@@ -60,7 +60,6 @@ export default function BeginnerQuestion() {
         );
       });
       setBeginnerAnswers(beginnerAnswers);
-
     }
 
     getData();
@@ -78,10 +77,9 @@ export default function BeginnerQuestion() {
   const newScore = score + 10;
 
   const checkAnswer = () => {
-    console.log(correct)
+    console.log(correct);
     if (correct === true) {
-      setScore(newScore)
-
+      setScore(newScore);
 
       const updateUser = {
         streak: user[0].streak + 1,
@@ -97,7 +95,7 @@ export default function BeginnerQuestion() {
         .then(() => {
           setButtonText("Correct!");
         });
-        setAnswerCorrect(true)
+      setAnswerCorrect(true);
     } else if (correct === false) {
       const updateUser = {
         streak: 0,
@@ -133,7 +131,6 @@ export default function BeginnerQuestion() {
   };
 
   const handleCheckClick = () => {
-
     if (
       user[0].uid &&
       beginnerQuestions[0].haveAnswered.includes(user[0].uid)
@@ -152,12 +149,12 @@ export default function BeginnerQuestion() {
     if (selectedAnswer === answer) {
       if (checkClicked) {
         if (correct) {
-          return "text-green-200";
+          return "text-green-300 dark:bg-slate-800 dark:text-green-700";
         } else {
-          return "text-red-200";
+          return "text-red-300 dark:bg-slate-800 dark:text-red-700 dark:text-opacity-80";
         }
       } else {
-        return "text-blue-200";
+        return "bg-gray-400 text-slate-100 dark:bg-slate-800 dark:text-slate-200"
       }
     }
   };
@@ -167,20 +164,23 @@ export default function BeginnerQuestion() {
       <div className="flex place-content-between py-5 mt-5">
         <Link className="flex flex-col justify-center" href="/dashboard">
           <button className=" hover:text-gray-500">
-            <b className="text-lg">X</b>
+            <b className="text-lg dark:text-slate-200 dark:hover:opacity-70">
+              X
+            </b>
           </button>
         </Link>
-        
-        <h2 className="flex items-center ml-10 font-semibold text-lg">Beginner</h2>
+
+        <h2 className="flex items-center ml-10 font-semibold text-lg text-slate-900 dark:text-slate-200">
+          Beginner
+        </h2>
 
         <div className="bg-slate-200 rounded-full py-1 px-3">
           <div className="flex items-center gap-2">
             <b>
-            {/* <UserScore/> */}
+              {/* <UserScore/> */}
 
-            {!answerCorrect && score}
-            {answerCorrect && score}
-              
+              {!answerCorrect && score}
+              {answerCorrect && score}
             </b>
             <Image
               className="mb-1"
@@ -198,7 +198,7 @@ export default function BeginnerQuestion() {
         {beginnerQuestions.length > 0 &&
         beginnerQuestions[0].dayID !== undefined ? (
           <Image
-            className="rounded-md shadow-lg"
+            className="rounded-md shadow-lg dark:border-2 dark:border-slate-500"
             src={`/images/beginner/${beginnerQuestions[0].dayID}.png`}
             alt="Code"
             width={0}
@@ -213,7 +213,7 @@ export default function BeginnerQuestion() {
 
       {beginnerQuestions.map((question) => (
         <div
-          className="p-3 bg-blue-100 rounded-md shadow-sm mb-10"
+          className="p-3 bg-blue-100 rounded-md shadow-sm mb-10 dark:bg-slate-300 dark:shadow-gray-800 dark:text-slate-900"
           key={question.id}
         >
           <p className="text-sm font-medium">{question.questionText}</p>
@@ -224,11 +224,13 @@ export default function BeginnerQuestion() {
       <section className="mb-5">
         <div className="flex flex-row gap-2 items-center my-4">
           <div className="avatar placeholder">
-            <div className="bg-gray-600 text-white rounded-full w-4">
+            <div className="bg-gray-600 text-slate-200 rounded-full w-4">
               <span className="text-xs">i</span>
             </div>
           </div>
-          <h2 className="flex items-center text-sm">Select an answer</h2>
+          <h2 className="flex items-center text-sm dark:text-slate-200 dark:opacity-70">
+            Select an answer
+          </h2>
         </div>
 
         {beginnerAnswers.map((answer) => (
@@ -236,9 +238,7 @@ export default function BeginnerQuestion() {
             <button
               value={answer.correct}
               onClick={(event) => handleAnswerClick(event, answer)}
-              className={`mb-4 min-w-full text-left text-sm font-medium p-3 rounded-md shadow-md bg-white ${setColour(
-                answer
-              )}`}
+              className={`mb-4 min-w-full text-left text-sm font-medium p-3 rounded-md shadow-sm bg-slate-50 dark:bg-slate-300 ${setColour(answer)}`}
             >
               {answer.answerText}
             </button>
@@ -247,15 +247,17 @@ export default function BeginnerQuestion() {
       </section>
 
       {!showExplanation && (
-        <details className="collapse bg-blue-100 rounded-md shadow-sm">
-          <summary className="collapse-title text-base font-normal p-5">
+        <details className="collapse bg-blue-100 dark:bg-slate-800 rounded-md shadow-sm dark:shadow-gray-800">
+          <summary className="collapse-title text-base font-normal p-5 dark:text-slate-200 dark:text-opacity-70">
             Need a hint?
           </summary>
           <div className="collapse-content text-sm italic">
             <div>
               {beginnerQuestions.map((question) => (
                 <div key={question.id}>
-                  <p>{question.hintText}</p>
+                  <p className="dark:text-slate-200 dark:text-opacity-70">
+                    {question.hintText}
+                  </p>
                 </div>
               ))}
             </div>
@@ -266,7 +268,7 @@ export default function BeginnerQuestion() {
       {showExplanation && (
         <details
           className={`collapse ${
-            correct ? "bg-green-100" : "bg-red-100"
+            correct ? "bg-green-300 dark:bg-green-900 dark: text-slate-900" : "bg-red-300 text-slate-900 dark:bg-red-900 dark:text-slate-200"
           } rounded-md shadow-sm`}
         >
           <summary className="collapse-title text-base font-normal p-5">
@@ -280,10 +282,10 @@ export default function BeginnerQuestion() {
 
       {/* <div className="bg-slate-50 min-w-full h-[59.9rem] -z-10 absolute left-0 bottom-0 rounded-t-lg mt-4 shadow-lg border-t-4 border-gray-300 "></div> */}
 
-      <div className="min-w-full bg-blue-100 fixed bottom-0 left-0 flex justify-center p-8 rounded-t-md border-t-2 border-gray-100">
+      <div className="min-w-full bg-blue-100 fixed bottom-0 left-0 flex justify-center p-8 rounded-t-md border-t-4 border-slate-200 dark:bg-slate-800 dark:border-slate-700">
         <button
           onClick={handleCheckClick}
-          className="p-3 w-full bg-white rounded-md shadow-sm font-semibold"
+          className="p-3 w-full bg-white dark:bg-slate-200 dark:text-slate-900 rounded-md shadow-sm font-semibold"
           disabled={!selectedAnswer}
         >
           {alreadyAnswered ? "Already answered" : buttonText}

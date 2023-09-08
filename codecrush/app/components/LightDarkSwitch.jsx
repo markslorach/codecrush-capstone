@@ -1,29 +1,44 @@
-// import { useEffect } from 'react'
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import Dark from "@/public/images/light.svg";
+import Light from "@/public/images/dark.svg";
 
-// const LightDarkSwitch = () => {
-//   useEffect(() => {
+const LightDarkSwitch = () => {
+  const [isDark, setIsDark] = useState(false);
 
-//     document.documentElement.setAttribute(
-//       "data-theme",
-//       localStorage.getItem("theme") === "night" ? "night" : "winter"
-//     );
-//   }, []);
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      setIsDark(savedTheme === 'dark');
+      document.documentElement.classList.toggle('dark', savedTheme === 'dark');
+    }
+  }, []);
 
-//   return (
-//     <input
-//       type="checkbox"
-//       className="toggle"
-//       defaultChecked={
-//         typeof window !== "undefined" && localStorage.getItem("theme") === "night"
-//       }
-//       onClick={(e) => {
-//         let newTheme = e.target.checked ? "night" : "winter";
-//         localStorage.setItem("theme", newTheme);
-//         document.documentElement.setAttribute("data-theme", newTheme);
-//       }}
-//     />
-//   );
-// };
+  const toggleTheme = () => {
+    const newTheme = !isDark ? 'dark' : 'light';
+    setIsDark(!isDark);
+    document.documentElement.classList.toggle('dark', newTheme === 'dark');
+    localStorage.setItem('theme', newTheme);
+  };
 
-// export default LightDarkSwitch;
+  return (
+    <div className="flex items-center">
+      <Image
+        className="opacity-70 mr-2"
+        src={isDark ? Dark : Light}
+        alt={isDark ? "Dark mode" : "Light mode"}
+        width={25}
+        height={25}
+        onClick={toggleTheme}
+      />
+      <div className="">
+        <label className="switch">
+          <input type="checkbox" className="toggle toggle-md" checked={isDark} onChange={toggleTheme} />
+          <span className="slider round"></span>
+        </label>
+      </div>
+    </div>
+  );
+};
 
+export default LightDarkSwitch;

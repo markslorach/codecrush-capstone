@@ -16,6 +16,11 @@ async function getAnswers() {
   return res.json();
 }
 
+async function getUsers() {
+  const res = await fetch("http://localhost:8082/api/users");
+  return res.json();
+}
+
 export default function AdvancedQuestion() {
   const [advancedQuestions, setAdvancedQuestions] = useState([]);
   const [advancedAnswers, setAdvancedAnswers] = useState([]);
@@ -26,8 +31,15 @@ export default function AdvancedQuestion() {
   const [explanation, setExplanation] = useState("");
   const [showExplanation, setShowExplanation] = useState(false);
   const [buttonText, setButtonText] = useState("Check Answer");
-
+  const [answerCorrect, setAnswerCorrect] = useState(false);
+  const [score, setScore] = useState(0);
   const { user } = UserAuth();
+
+  useEffect(() => {
+    if (user) {
+      setScore(user[0].score);
+    }
+  }, [user]);
 
   useEffect(() => {
     async function getData() {
@@ -48,6 +60,7 @@ export default function AdvancedQuestion() {
         );
       });
       setAdvancedAnswers(advancedAnswers);
+
     }
 
     getData();
@@ -62,16 +75,21 @@ export default function AdvancedQuestion() {
     }
   };
 
+  const newScore = score + 10;
+
   const checkAnswer = () => {
+    console.log(correct)
     if (correct === true) {
+      setScore(newScore)
+
+
       const updateUser = {
         streak: user[0].streak + 1,
-        score: user[0].score + 10,
+        score: newScore,
         username: user[0].username,
         uid: user[0].uid,
         id: user[0].id,
       };
-      console.log(updateUser);
 
       const request = new Request();
       request
@@ -79,6 +97,7 @@ export default function AdvancedQuestion() {
         .then(() => {
           setButtonText("Correct!");
         });
+        setAnswerCorrect(true)
     } else if (correct === false) {
       const updateUser = {
         streak: 0,
@@ -87,7 +106,6 @@ export default function AdvancedQuestion() {
         uid: user[0].uid,
         id: user[0].id,
       };
-      console.log(updateUser);
 
       const request = new Request();
       request
@@ -115,6 +133,7 @@ export default function AdvancedQuestion() {
   };
 
   const handleCheckClick = () => {
+
     if (
       user[0].uid &&
       advancedQuestions[0].haveAnswered.includes(user[0].uid)
@@ -126,7 +145,6 @@ export default function AdvancedQuestion() {
       logAttempt();
       updateQuestion();
       setShowExplanation(true);
-      console.log(user[0]);
     }
   };
 
@@ -152,13 +170,17 @@ export default function AdvancedQuestion() {
             <b className="text-lg">X</b>
           </button>
         </Link>
-
+        
         <h2 className="flex items-center ml-11 font-semibold text-lg">Advanced</h2>
 
         <div className="bg-slate-200 rounded-full py-1 px-3">
           <div className="flex items-center gap-2">
             <b>
-              <UserScore />
+            {/* <UserScore/> */}
+
+            {!answerCorrect && score}
+            {answerCorrect && score}
+              
             </b>
             <Image
               className="mb-1"
@@ -171,23 +193,23 @@ export default function AdvancedQuestion() {
         </div>
       </div>
 
-{/* CODE BOX */}
-<div className="flex justify-center min-w-full pt-5 pb-2">
-  {advancedQuestions.length > 0 && advancedQuestions[0].dayID !== undefined ? (
-    <Image
-      className="rounded-md shadow-lg"
-      src={`/images/advanced/${advancedQuestions[0].dayID}.png`}
-      alt="Code"
-      width={0}
-      height={0}
-      layout="responsive"
-      onError={(e) => {
-        e.target.style.display = "none";
-      }}
-    />
-  ) : null}
-</div>
-
+      {/* CODE BOX */}
+      <div className="flex justify-center min-w-full pt-5 pb-2">
+        {advancedQuestions.length > 0 &&
+        advancedQuestions[0].dayID !== undefined ? (
+          <Image
+            className="rounded-md shadow-lg"
+            src={`/images/advanced/${advancedQuestions[0].dayID}.png`}
+            alt="Code"
+            width={0}
+            height={0}
+            layout="responsive"
+            onError={(e) => {
+              e.target.style.display = "none";
+            }}
+          />
+        ) : null}
+      </div>
 
       {advancedQuestions.map((question) => (
         <div
@@ -256,7 +278,7 @@ export default function AdvancedQuestion() {
         </details>
       )}
 
-      {/* <div className="bg-slate-50 min-w-full h-[59.9rem] -z-10 absolute left-0 bottom-0 rounded-t-lg mt-4 shadow-lg "></div> */}
+      {/* <div className="bg-slate-50 min-w-full h-[59.9rem] -z-10 absolute left-0 bottom-0 rounded-t-lg mt-4 shadow-lg border-t-4 border-gray-300 "></div> */}
 
       <div className="min-w-full bg-blue-100 fixed bottom-0 left-0 flex justify-center p-8 rounded-t-md border-t-2 border-gray-100">
         <button
