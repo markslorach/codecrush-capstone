@@ -22,7 +22,7 @@ const sectionAnimation = {
 
 export default function Profile() {
   return (
-    <main className="p-8 min-h-screen">
+    <main className="main">
       <div className="flex place-content-between mt-4 mb-6">
         <h2 className="py-8 text-xl font-semibold">Profile Page</h2>
         <div className="flex items-center">

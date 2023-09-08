@@ -5,7 +5,7 @@ import AdvancedQuestion from "./AdvancedQuestion";
 
 export default function Advanced() {
   return (
-    <main className="p-8 min-h-screen min-w-full relative">
+    <main className="main">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

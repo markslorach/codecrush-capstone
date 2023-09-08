@@ -21,7 +21,7 @@ export default function Dashboard() {
   const [isPythonModalOpen, setIsPythonModalOpen] = useState(false);
 
   return (
-    <main className="p-8 min-h-screen xl:pl-96 xl:pr-96">
+    <main className="main">
     
       {/* WELCOME */}
       <div className="flex place-content-between">
@@ -37,7 +37,7 @@ export default function Dashboard() {
 
       <DayDate />
 
-      <div className="p-3 bg-blue-100 rounded-md shadow-sm mb-8 pl-5 pr-5">
+      <div className="coding-fact-box">
         <CodingFacts />
       </div>
 
@@ -84,13 +84,13 @@ export default function Dashboard() {
           onClick={() => setIsPythonModalOpen(true)}
         >
           <div className="avatar">
-            <div className="w-16 rounded-full p-2 bg-slate-50">
+            <div className="code-card-avatar">
               <Image src={Python} alt="Python" placeholder="blur" />
             </div>
           </div>
 
           <h3 className="text-center my-0 font-semibold">Python</h3>
-          <p className="my-0 py-1 text-xs text-gray-400">
+          <p className="card-description">
             Test your skills in today's Python challenge.
           </p>
         </button>
@@ -98,13 +98,13 @@ export default function Dashboard() {
         {/* JAVASCRIPT CARD */}
         <button className="js-card">
           <div className="avatar">
-            <div className="w-16 rounded-full p-2 bg-slate-50">
+            <div className="code-card-avatar">
               <Image src={js} alt="Python" placeholder="blur" />
             </div>
           </div>
 
           <h3 className="text-center my-0 font-semibold">JavaScript</h3>
-          <p className="my-0 py-1 text-xs text-gray-400">
+          <p className="card-description">
             Think you can take on today's JavaScript challenge?
           </p>
         </button>
@@ -121,7 +121,7 @@ export default function Dashboard() {
       <div className="flex place-content-between gap-5 mb-20">
         <div className="java-card">
           <div className="avatar">
-            <div className="w-16 rounded-full p-2 bg-slate-50">
+            <div className="code-card-avatar">
               <Image src={Java} alt="Java" placeholder="blur" />
             </div>
           </div>
@@ -132,7 +132,7 @@ export default function Dashboard() {
         {/* C# CARD */}
         <div className="c-card">
           <div className="avatar">
-            <div className="w-16 rounded-full p-2 bg-slate-50">
+            <div className="code-card-avatar">
               <Image src={cLogo} alt="C#" placeholder="blur" />
             </div>
           </div>

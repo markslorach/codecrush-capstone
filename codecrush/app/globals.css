@@ -25,13 +25,9 @@
   @apply border-b-2 border-gray-600 text-white bg-[#4285F4] hover:bg-[#4285F4]/90 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 mb-2 transform focus:scale-95 
 }
 
-nav {
-  @apply w-full flex flex-wrap
+.main {
+  @apply p-8 min-h-screen
 }
-
-nav a {
-    @apply pr-2;
-  }
 
   .dash-heading {
     @apply mb-5 font-semibold
@@ -43,6 +39,18 @@ nav a {
 
   .dash-stats-item {
     @apply flex flex-col items-center justify-center
+  }
+
+  .coding-fact-box {
+    @apply p-3 bg-blue-100 rounded-md shadow-sm mb-8 pl-5 pr-5
+  }
+
+  .code-card-avatar {
+    @apply w-16 rounded-full p-2 bg-slate-50
+  }
+
+  .card-description {
+    @apply my-0 py-1 text-xs text-gray-400
   }
 
   .python-card {
