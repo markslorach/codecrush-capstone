@@ -1,15 +1,15 @@
-import React from 'react'
-import { UserAuth } from '../context/AuthContext'
+import React, { useEffect, useState } from 'react';
+import { UserAuth } from '../context/AuthContext';
 
 export const UserScore = () => {
-  
-    const{user} = UserAuth();
+  const { user } = UserAuth();
+  const [score, setScore] = useState(0);
 
-  return (
-    <>
-    {!user ? (<p>0</p>) : (
-        <p>{user[0].score}</p>
-    )}
-    </>
-  )
-}
+  useEffect(() => {
+    if (user) {
+      setScore(user[0].score);
+    }
+  }, [user]);
+
+  return <p>{score}</p>;
+};

@@ -1,11 +1,10 @@
 import Link from "next/link";
+import Request from "../helpers/Request";
 import React, { useState, useEffect } from "react";
 import { UserAuth } from "../context/AuthContext";
-import Request from "../helpers/Request";
-import Image from "next/image";
-import Code from "@/public/images/question_images/carbon.png";
-import Score from "@/public/images/score.png";
 import { UserScore } from "../profile/UserScore";
+import Image from "next/image";
+import Score from "@/public/images/score.png";
 
 async function getQuestions() {
   const res = await fetch("http://localhost:8082/api/questions");
@@ -48,7 +47,6 @@ export default function BeginnerQuestion() {
           (beginnerQuestion) => beginnerQuestion.id === answer.question.id
         );
       });
-
       setBeginnerAnswers(beginnerAnswers);
     }
 
@@ -173,12 +171,20 @@ export default function BeginnerQuestion() {
 
       {/* CODE BOX */}
       <div className="flex justify-center min-w-full pt-5 pb-2">
-        <Image
-          className="rounded-md shadow-lg"
-          src={Code}
-          alt="Code"
-          placeholder="blur"
-        />
+        {beginnerQuestions.length > 0 &&
+        beginnerQuestions[0].dayID !== undefined ? (
+          <Image
+            className="rounded-md shadow-lg"
+            src={`/images/beginner/${beginnerQuestions[0].dayID}.png`}
+            alt="Code"
+            width={0}
+            height={0}
+            layout="responsive"
+            onError={(e) => {
+              e.target.style.display = "none";
+            }}
+          />
+        ) : null}
       </div>
 
       {beginnerQuestions.map((question) => (
@@ -234,7 +240,11 @@ export default function BeginnerQuestion() {
       )}
 
       {showExplanation && (
-        <details className="collapse bg-blue-100 rounded-md shadow-sm">
+        <details
+          className={`collapse ${
+            correct ? "bg-green-100" : "bg-red-100"
+          } rounded-md shadow-sm`}
+        >
           <summary className="collapse-title text-base font-normal p-5">
             Explanation
           </summary>
@@ -244,13 +254,13 @@ export default function BeginnerQuestion() {
         </details>
       )}
 
-      <div className="bg-slate-50 min-w-full h-[59.9rem] -z-10 absolute left-0 bottom-0 rounded-t-lg mt-4 shadow-lg "></div>
+      {/* <div className="bg-slate-50 min-w-full h-[59.9rem] -z-10 absolute left-0 bottom-0 rounded-t-lg mt-4 shadow-lg border-t-4 border-gray-300 "></div> */}
 
       <div className="min-w-full bg-blue-100 fixed bottom-0 left-0 flex justify-center p-8 rounded-t-md border-t-2 border-gray-100">
         <button
           onClick={handleCheckClick}
           className="p-3 w-full bg-white rounded-md shadow-sm font-semibold"
-          disabled={!selectedAnswer} 
+          disabled={!selectedAnswer}
         >
           {alreadyAnswered ? "Already answered" : buttonText}
         </button>

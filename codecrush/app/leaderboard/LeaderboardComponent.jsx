@@ -3,14 +3,11 @@ import Request from "../helpers/Request";
 import Image from "next/image";
 import { BottomNav } from "../components/BottomNav";
 import Score from "@/public/images/score.png";
-import Streak from "@/public/images/streak.png";
-import cLogo from "@/public/images/c_logo.png";
 import Trophy from "@/public/images/trophy.png";
-import userIcon from "@/public/images/userIcon.png";
 import bronzecup from "@/public/images/bronzecup.png";
 import slivercup from "@/public/images/silvercup.png";
 import goldcup1 from "@/public/images/goldcup1.png";
-import { Avatar } from "../profile/Avatar";
+import { UserScore } from "../profile/UserScore";
 
 export const LeaderboardComponent = () => {
   const [users, setUsers] = useState([]);
@@ -31,174 +28,110 @@ export const LeaderboardComponent = () => {
 
     return (
       <div key={index}>
-        <p className="py-1">{firstName}</p>
+        <p>{firstName}</p>
       </div>
     );
   });
 
-  const scoreLeaderboard = orderedUsers.map((user, index) => {
+  const leaderboardRows = orderedUsers.map((user, index) => {
     const firstName = user.username.split(" ")[0];
 
     return (
-      <div key={index}>
-        <p className="py-1">{user.score}</p>
-      </div>
+      <tr key={index}>
+        <td>{index + 1}</td>
+        <td>{firstName}</td>
+        <td>{user.score}</td>
+      </tr>
     );
   });
 
-  // const rankLeaderboard = orderedUsers.map((user, index) => {
-  //   const rankPosition = user.userRank[0];
-
-  //   return (
-  //   <div key={index}>
-  //     {/* <p> {++index}</p> */}
-  //     <p>{user.rank}</p>
-  //   </div>
-  //   );
-  // })
-
   return (
     <>
-      <section className="flex place-content-between py-0">
-        <div className="flex gap-2">
-          <p className="flex gap-3 space place-content-between font-semibold ">
-            Leaderboard
-          </p>
-          <span className="wave">🚀</span>
+      <section className="flex place-content-between mt-4 mb-6">
+        <div className="flex">
+          <h2 className="py-8 text-xl font-semibold">Leaderboard</h2>
         </div>
-        <div>
-          <Avatar />
+        
+        <div className="flex items-center">
+          <div className="bg-slate-200 rounded-full py-1 px-3">
+            <div className="flex items-center gap-2">
+              <b>
+                <UserScore />
+              </b>
+              <Image
+                className="mb-1"
+                src={Score}
+                alt="Score"
+                width={16}
+                height={16}
+              />
+            </div>
+          </div>
         </div>
       </section>
 
-      <div className="flex items-center gap-2 mb-5">
-        {/* <p className="font-semibold text-xl">Score</p> */}
-        {/* <Image src={Score} alt="Score" width={16} height={16} /> */}
-      </div>
+      {/* PLAYER CARDS */}
+      <div className="flex gap-3 pb-8">
 
-      <div className="flex gap-3 pt-4 pb-6">
         {/* player 1 card */}
-
-        <div className="c-card gold-card">
-          {userLeaderboard[0]}
+        <section className="c-card gold-card">
           <div className="avatar">
-            <div className="w-16 rounded-full p-2 bg-slate-50">
+            <div className="w-14 rounded-full p-2 bg-slate-50">
               <Image src={goldcup1} alt="Trophy Gold" width={16} height={16} />
             </div>
           </div>
-        </div>
+          <p className="font-semibold">{userLeaderboard[0]}</p>
+        </section>
 
         {/* player 2 card */}
-
-        <div className="c-card silver-card">
-          {userLeaderboard[1]}
+        <section className="c-card silver-card">
           <div className="avatar">
-            <div className="w-16 rounded-full p-2 bg-slate-50">
-              <Image src={slivercup} alt="Trophy Silver" placeholder="blur" />
+            <div className="w-14 rounded-full p-2 bg-slate-50">
+              <Image
+                src={slivercup}
+                alt="Trophy Silver"
+                width={16}
+                height={16}
+              />
             </div>
           </div>
-        </div>
+          <p className="font-semibold">{userLeaderboard[1]}</p>
+        </section>
 
         {/* player 3 card */}
-
-        <div className="c-card bronze-card">
-          {userLeaderboard[3]}
+        <section className="c-card bronze-card">
           <div className="avatar">
-            <div className="w-16 rounded-full p-2 bg-slate-50">
-              <Image src={bronzecup} alt="Trophy Bronze" placeholder="blur" />
+            <div className="w-14 rounded-full p-2 bg-slate-50">
+              <Image
+                src={bronzecup}
+                alt="Trophy Bronze"
+                width={16}
+                height={16}
+              />
             </div>
           </div>
-        </div>
+          <p className="font-semibold">{userLeaderboard[2]}</p>
+        </section>
       </div>
 
-      <div className="overflow-x-auto">
-        <table className="table table-zebra">
-          {/* head */}
 
-          <thead>
-            <tr>
-              <th className="flex gap-2">
-                Rank
-                <Image src={Trophy} alt="Trophy" width={14} height={14} />
-              </th>
-
-              <th>
-                Username
-                {/* <Image src={userIcon} alt="userIcon" width={16} height={16} /> */}
-              </th>
-
-              <th className="flex gap-2">
-                Score
-                <Image src={Score} alt="Score" width={14} height={14} />
-              </th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {/* row 1 */}
-            <tr>
-              <th>1</th>
-
-              <td>{userLeaderboard[0]}</td>
-              <td>{scoreLeaderboard[0]}</td>
-            </tr>
-            {/* row 2 */}
-            <tr>
-              <th>2</th>
-              <td>{userLeaderboard[1]}</td>
-              <td>{scoreLeaderboard[1]}</td>
-            </tr>
-            {/* row 3 */}
-            <tr>
-              <th>3</th>
-              <td>{userLeaderboard[3]}</td>
-              <td>{scoreLeaderboard[3]}</td>
-            </tr>
-            {/* row 4 */}
-            <tr>
-              <th>3</th>
-              <td>{userLeaderboard[4]}</td>
-              <td>{scoreLeaderboard[4]}</td>
-            </tr>
-            {/* row 5 */}
-            <tr>
-              <th>3</th>
-              <td>{userLeaderboard[5]}</td>
-              <td>{scoreLeaderboard[5]}</td>
-            </tr>
-            {/* row 6 */}
-            <tr>
-              <th>3</th>
-              <td>{userLeaderboard[6]}</td>
-              <td>{scoreLeaderboard[6]}</td>
-            </tr>
-            {/* row 7 */}
-            <tr>
-              <th>3</th>
-              <td>{userLeaderboard[7]}</td>
-              <td>{scoreLeaderboard[7]}</td>
-            </tr>
-            {/* row 8 */}
-            <tr>
-              <th>3</th>
-              <td>{userLeaderboard[8]}</td>
-              <td>{scoreLeaderboard[8]}</td>
-            </tr>
-            {/* row 9 */}
-            <tr>
-              <th>3</th>
-              <td>{userLeaderboard[9]}</td>
-              <td>{scoreLeaderboard[9]}</td>
-            </tr>
-            {/* row 10 */}
-            <tr>
-              <th>3</th>
-              <td>{userLeaderboard[10]}</td>
-              <td>{scoreLeaderboard[10]}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      {/* TABLE */}
+      <table className="table table-zebra shadow-md">
+        <thead>
+          <tr>
+            <th className="flex gap-2">
+              Rank
+              <Image src={Trophy} alt="Trophy" width={14} height={14} />
+            </th>
+            <th>Player</th>
+            <th className="flex gap-2">
+              Score
+              <Image src={Score} alt="Score" width={14} height={14} />
+            </th>
+          </tr>
+        </thead>
+        <tbody>{leaderboardRows}</tbody>
+      </table>
 
       <BottomNav />
     </>

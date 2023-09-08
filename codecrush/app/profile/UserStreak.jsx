@@ -1,15 +1,15 @@
-import React from 'react'
-import { UserAuth } from '../context/AuthContext'
+import React, { useEffect, useState } from 'react';
+import { UserAuth } from '../context/AuthContext';
 
 export const UserStreak = () => {
+  const { user } = UserAuth();
+  const [streak, setStreak] = useState(0);
 
-    const{user} = UserAuth();
+  useEffect(() => {
+    if (user) {
+      setStreak(user[0].streak);
+    }
+  }, [user]);
 
-  return (
-    <>
-    {!user ? (<p>0</p>) : (
-        <p>{user[0].streak}</p>
-    )}
-    </>
-  )
-}
+  return <p>{streak}</p>;
+};
