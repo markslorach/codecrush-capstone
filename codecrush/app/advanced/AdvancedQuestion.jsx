@@ -153,6 +153,8 @@ export default function AdvancedQuestion() {
           </button>
         </Link>
 
+        <h2 className="flex items-center ml-11 font-semibold text-lg">Advanced</h2>
+
         <div className="bg-slate-200 rounded-full py-1 px-3">
           <div className="flex items-center gap-2">
             <b>

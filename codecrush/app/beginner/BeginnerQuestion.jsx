@@ -152,6 +152,8 @@ export default function BeginnerQuestion() {
             <b className="text-lg">X</b>
           </button>
         </Link>
+        
+        <h2 className="flex items-center ml-10 font-semibold text-lg">Beginner</h2>
 
         <div className="bg-slate-200 rounded-full py-1 px-3">
           <div className="flex items-center gap-2">
