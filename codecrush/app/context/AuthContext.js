@@ -22,7 +22,6 @@ const logOut = () => {
 useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth,(currentUser) => {
         if (currentUser !== null) {
-        console.log(currentUser)
         const createdUser = createNewUser(currentUser)
     addUser(createdUser)
     

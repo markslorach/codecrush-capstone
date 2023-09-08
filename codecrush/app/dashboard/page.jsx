@@ -16,6 +16,8 @@ import Score from "@/public/images/score.png";
 import Trophy from "@/public/images/trophy.png";
 import { CodingFacts } from "../components/CodingFacts";
 import { DayDate } from "../components/DayDate";
+import { UserRank } from "../profile/UserRank";
+
 
 export default function Dashboard() {
   const [isPythonModalOpen, setIsPythonModalOpen] = useState(false);
@@ -67,8 +69,9 @@ export default function Dashboard() {
         <div className="dash-stats-item">
           <p className="text-sm">Leaderboard</p>
           <div className="flex items-center gap-2">
+            
             <p>
-              <b>0</b>
+              <UserRank/>
             </p>
             <Image src={Trophy} alt="Trophy" width={16} height={16} />
           </div>
