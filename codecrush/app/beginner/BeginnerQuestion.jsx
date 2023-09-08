@@ -149,15 +149,15 @@ export default function BeginnerQuestion() {
     if (selectedAnswer === answer) {
       if (checkClicked) {
         if (correct) {
-          return "text-green-300 dark:bg-slate-800 dark:text-green-700";
+          return "text-slate-900 bg-gray-300 dark:bg-slate-700 dark:text-slate-200";
         } else {
-          return "text-red-300 dark:bg-slate-800 dark:text-red-700 dark:text-opacity-80";
+          return "text-slate-900 bg-gray-300 dark:bg-slate-700 dark:text-slate-200";
         }
-      } else {
-        return "bg-gray-400 text-slate-100 dark:bg-slate-800 dark:text-slate-200"
       }
     }
+    return "";
   };
+  
 
   return (
     <>
@@ -238,7 +238,7 @@ export default function BeginnerQuestion() {
             <button
               value={answer.correct}
               onClick={(event) => handleAnswerClick(event, answer)}
-              className={`mb-4 min-w-full text-left text-sm font-medium p-3 rounded-md shadow-sm bg-slate-50 dark:bg-slate-300 ${setColour(answer)}`}
+              className={`mb-4 min-w-full text-left text-sm font-medium focus:bg-slate-300 p-3 rounded-md shadow-sm bg-white dark:bg-slate-300 dark:focus:bg-slate-700 dark:focus:text-slate-200 ${setColour(answer)}`}
             >
               {answer.answerText}
             </button>
@@ -268,7 +268,7 @@ export default function BeginnerQuestion() {
       {showExplanation && (
         <details
           className={`collapse ${
-            correct ? "bg-green-300 dark:bg-green-900 dark: text-slate-900" : "bg-red-300 text-slate-900 dark:bg-red-900 dark:text-slate-200"
+            correct ? "bg-green-300 dark:bg-green-900 dark: text-slate-900 dark:text-slate-200" : "bg-red-300 text-slate-900 dark:bg-red-900 dark:text-slate-200"
           } rounded-md shadow-sm`}
         >
           <summary className="collapse-title text-base font-normal p-5">

@@ -37,7 +37,7 @@ export const LeaderboardComponent = () => {
     const firstName = user.username.split(" ")[0];
 
     return (
-      <tr key={index}>
+      <tr className="border-slate-300 dark:border-slate-400" key={index}>
         <td className="text-slate-900"><b>{index + 1}</b></td>
         <td className="text-slate-900">{firstName}</td>
         <td className="text-slate-900">{user.score}</td>
@@ -116,17 +116,17 @@ export const LeaderboardComponent = () => {
 
 
       {/* TABLE */}
-      <table className="table shadow-md rounded-md mt-4 bg-slate-200">
+      <table className="table shadow-md rounded-md mt-4 bg-slate-100 dark:bg-slate-300">
         <thead>
-          <tr className="bg-slate-300">
-            <th className="flex gap-2 text-slate-900 text-sm">
+          <tr className="bg-blue-100 border-b-slate-200 dark:bg-slate-700">
+            <th className="flex gap-2 text-slate-900 dark:text-slate-200 text-sm">
               Rank
               <div className="flex items-center">
               <Image src={Trophy} alt="Trophy" width={14} height={14} />
               </div>
             </th>
-            <th className="text-slate-900 text-sm">Player</th>
-            <th className="flex gap-2 text-slate-900 text-sm">
+            <th className="text-slate-900 dark:text-slate-200 text-sm ">Player</th>
+            <th className="flex gap-2 text-slate-900 dark:text-slate-200 text-sm">
               Score
               <div className="flex items-center">
               <Image src={Score} alt="Score" width={14} height={14} />

@@ -17,6 +17,7 @@ import Trophy from "@/public/images/trophy.png";
 import { CodingFacts } from "../components/CodingFacts";
 import { DayDate } from "../components/DayDate";
 import { UserRank } from "../profile/UserRank";
+import LightDarkSwitch from "../components/LightDarkSwitch";
 
 
 export default function Dashboard() {
@@ -34,7 +35,7 @@ export default function Dashboard() {
             <span className="wave ml-2">👋</span>
           </div>
         </div>
-        <Avatar />
+        <LightDarkSwitch />
       </div>
 
       <DayDate />
