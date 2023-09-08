@@ -37,7 +37,7 @@ export const LeaderboardComponent = () => {
     const firstName = user.username.split(" ")[0];
 
     return (
-      <tr className="border-slate-300 dark:border-slate-400" key={index}>
+      <tr className="border-slate-200 dark:border-slate-400" key={index}>
         <td className="text-slate-900"><b>{index + 1}</b></td>
         <td className="text-slate-900">{firstName}</td>
         <td className="text-slate-900">{user.score}</td>

@@ -1,6 +1,8 @@
 import React from "react";
 import { UserAuth } from "../context/AuthContext";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import Logo from "@/public/images/codecrush_logo.png";
 
 export default function LoginComponent() {
   const { googleSignIn } = UserAuth();
@@ -15,10 +17,18 @@ export default function LoginComponent() {
 
   return (
     <main>
-      <motion.div
-        initial={{ scale: 1.10 }}
-        animate={{ scale: 1.15 }}
+   
+      <motion.div className="flex flex-col items-center gap-8"
+        initial={{ scale: 0.95 }}
+        animate={{ scale: 1 }}
       >
+  
+     <Image 
+              className=""
+              src={Logo}
+              alt="Logo"
+             
+            />
         <button
           onClick={handleSignIn}
           type="button"
@@ -42,6 +52,7 @@ export default function LoginComponent() {
           Sign in with Google
         </button>
       </motion.div>
+    
     </main>
   );
 }

@@ -5,7 +5,7 @@ import LoginComponent from './LoginComponent'
 
 export default function login() {
   return (
-    <main>
+    <main className='main bg-slate-100'>
  <div className="flex items-center justify-center h-screen">
   <LoginComponent />
 </div>
