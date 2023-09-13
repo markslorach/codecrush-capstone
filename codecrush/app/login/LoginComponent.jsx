@@ -2,7 +2,7 @@ import React from "react";
 import { UserAuth } from "../context/AuthContext";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Logo from "@/public/images/codecrush_logo.png";
+import Logo from "@/public/images/logo.svg";
 
 export default function LoginComponent() {
   const { googleSignIn } = UserAuth();
