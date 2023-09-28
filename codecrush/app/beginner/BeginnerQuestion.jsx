@@ -6,7 +6,6 @@ import Image from "next/image";
 import Code from "@/public/images/question_images/carbon.png";
 import Score from "@/public/images/score.png";
 import { UserScore } from "../profile/UserScore";
-import { motion } from "framer-motion";
 
 async function getQuestions() {
   const res = await fetch("http://localhost:8082/api/questions");
@@ -22,11 +21,12 @@ export default function BeginnerQuestion() {
   const [beginnerQuestions, setBeginnerQuestions] = useState([]);
   const [beginnerAnswers, setBeginnerAnswers] = useState([]);
   const [correct, setCorrect] = useState(null);
-  const [result, setResult] = useState("");
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [checkClicked, setCheckClicked] = useState(false);
   const [alreadyAnswered, setAlreadyAnswered] = useState(false);
   const [explanation, setExplanation] = useState("");
+  const [showExplanation, setShowExplanation] = useState(false);
+  const [buttonText, setButtonText] = useState("Check Answer");
 
   const { user } = UserAuth();
 
@@ -79,7 +79,7 @@ export default function BeginnerQuestion() {
       request
         .put(`http://localhost:8082/api/users/${user.uid}`, updateUser)
         .then(() => {
-          return setResult("Correct!");
+          setButtonText("Correct!");
         });
     } else if (correct === false) {
       const updateUser = {
@@ -95,10 +95,10 @@ export default function BeginnerQuestion() {
       request
         .put(`http://localhost:8082/api/users/${user.uid}`, updateUser)
         .then(() => {
-          return setResult("Incorrect");
+          setButtonText("Incorrect");
         });
     } else {
-      return setResult("Please select an answer");
+      setButtonText("Please select an answer");
     }
   };
 
@@ -127,6 +127,7 @@ export default function BeginnerQuestion() {
       checkAnswer();
       logAttempt();
       updateQuestion();
+      setShowExplanation(true);
       console.log(user[0]);
     }
   };
@@ -188,7 +189,6 @@ export default function BeginnerQuestion() {
           <p className="text-sm font-medium">{question.questionText}</p>
         </div>
       ))}
-      
 
       {/* ANSWERS */}
       <section className="mb-5">
@@ -216,46 +216,45 @@ export default function BeginnerQuestion() {
         ))}
       </section>
 
-   
-      <div className="text-center text-lg mt-4">{result}</div>
-
-
-      {/* HINT BOX */}
-      <details className="collapse bg-blue-100 rounded-md shadow-sm">
-        <summary className="collapse-title text-base font-normal p-5">
-          Need a hint?
-        </summary>
-        <div className="collapse-content text-sm italic">
-          <div>
-            {beginnerQuestions.map((question) => (
-              <div key={question.id}>
-                <p>{question.hintText}</p>
-              </div>
-            ))}
+      {!showExplanation && (
+        <details className="collapse bg-blue-100 rounded-md shadow-sm">
+          <summary className="collapse-title text-base font-normal p-5">
+            Need a hint?
+          </summary>
+          <div className="collapse-content text-sm italic">
+            <div>
+              {beginnerQuestions.map((question) => (
+                <div key={question.id}>
+                  <p>{question.hintText}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </details>
+        </details>
+      )}
+
+      {showExplanation && (
+        <details className="collapse bg-blue-100 rounded-md shadow-sm">
+          <summary className="collapse-title text-base font-normal p-5">
+            Explanation
+          </summary>
+          <div className="collapse-content text-sm italic">
+            <div>{checkClicked && <p>{explanation}</p>}</div>
+          </div>
+        </details>
+      )}
 
       <div className="bg-slate-50 min-w-full h-[59.9rem] -z-10 absolute left-0 bottom-0 rounded-t-lg mt-4 shadow-lg "></div>
 
-      {/* CHECK ANSWER */}
       <div className="min-w-full bg-blue-100 fixed bottom-0 left-0 flex justify-center p-8 rounded-t-md border-t-2 border-gray-100">
         <button
           onClick={handleCheckClick}
           className="p-3 w-full bg-white rounded-md shadow-sm font-semibold"
+          disabled={!selectedAnswer} 
         >
-          {alreadyAnswered ? "Already answered" : "Check Answer"}
+          {alreadyAnswered ? "Already answered" : buttonText}
         </button>
       </div>
-
-      <motion.div
-        initial={{ height: 0, opacity: 0, overflow: "hidden" }}
-        animate={checkClicked ? { height: "auto", opacity: 1 } : {}}
-        transition={{ duration: 0.4 }}>
-        <p>{explanation}</p>
-      </motion.div>
-
-
     </>
   );
 }

@@ -17,7 +17,7 @@ import Dark from "@/public/images/darkmode.png";
 const sectionAnimation = {
   initial: { opacity: 0 },
   animate: { opacity: 1 },
-  transition: { duration: 0.5, ease: "easeIn" }, // Set the duration to 0.4 seconds and ease to easeInOut
+  transition: { duration: 0.4, ease: "easeIn" },
 };
 
 export default function Profile() {
