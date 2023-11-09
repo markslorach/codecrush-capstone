@@ -4,7 +4,6 @@ import { UserName } from "./UserName";
 import { PythonDifficultySelect } from "./PythonDifficultySelect";
 import { UserScore } from "../profile/UserScore";
 import { UserStreak } from "../profile/UserStreak";
-import { Avatar } from "../profile/Avatar";
 import { BottomNav } from "../components/BottomNav";
 import Image from "next/image";
 import Python from "@/public/images/python_logo.png";
@@ -19,9 +18,12 @@ import { DayDate } from "../components/DayDate";
 import { UserRank } from "../profile/UserRank";
 import LightDarkSwitch from "../components/LightDarkSwitch";
 
+export const revalidate = 0;
+export const dynamic = 'force-dynamic';
 
 export default function Dashboard() {
   const [isPythonModalOpen, setIsPythonModalOpen] = useState(false);
+
 
   return (
     <main className="main">
