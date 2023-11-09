@@ -24,6 +24,6 @@
 
 4. Run Frontend Application
    * Navigate back to the root directory of the project
-   * Run the following command: npm run dev
+   * Run the following command: `npm run dev`
    * This will start the Next.js development server
    * Open your web browser and navigate to `http://localhost:3000` to access the application
