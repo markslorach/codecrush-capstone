@@ -1,5 +1,7 @@
 # CodeCrush App
 
+CodeCrush is an interactive daily coding quiz game. Users receive a daily challenge that varies in difficulty from easy to advanced. They earn points for every correct answer and can track their progress on the leaderboard. Additionally, users can build a streak for consecutive correct answers, adding to the excitement of the game.
+
 **Prerequisites**
 
 * Next.js 13
