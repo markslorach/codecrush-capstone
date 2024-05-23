@@ -1,4 +1,4 @@
-# CodeCrush App
+# CodeCrush
 
 Quiz application with daily coding challenges. Answer questions correctly to build a streak, earn points and rank up on the leaderboard.
 
@@ -24,6 +24,7 @@ Quiz application with daily coding challenges. Answer questions correctly to bui
 
 2. Create PostgreSQL Database
    * Create a PostgreSQL database named `codecrush`
+     
      ```
       dropdb money_tracker
       psql -d money_tracker -f db/money_tracker.sql
