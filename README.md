@@ -1,15 +1,22 @@
 # CodeCrush App
 
-CodeCrush is an interactive daily coding quiz game. Users receive a daily challenge that varies in difficulty from easy to advanced. They earn points for every correct answer and can track their progress on the leaderboard. Additionally, users can build a streak for consecutive correct answers, adding to the excitement of the game.
+Quiz application with daily coding challenges. Answer questions correctly to build a streak, earn points and rank up on the leaderboard.
 
-**Prerequisites**
+### Tech Stack
+- Next.js
+- Tailwind
+- Java
+- Spring
+- PostgreSQL
+
+### Prerequisites
 
 * Next.js 13
 * Java Development Kit (JDK) 11
 * PostgreSQL database
 * IntelliJ IDEA
 
-⠀**Instructions**
+### Getting Started
 
 1. Install Dependencies
    * Navigate to the `codecrush_frontend directory`
@@ -17,6 +24,10 @@ CodeCrush is an interactive daily coding quiz game. Users receive a daily challe
 
 2. Create PostgreSQL Database
    * Create a PostgreSQL database named `codecrush`
+     ```
+      dropdb money_tracker
+      psql -d money_tracker -f db/money_tracker.sql
+      ```
    * Ensure the database is accessible from both your frontend and backend applications
    
 3. Setup Backend Application
