@@ -8,6 +8,7 @@ Quiz application with daily coding challenges. Answer questions correctly to bui
 - Java
 - Spring
 - PostgreSQL
+- Firebase Auth
 
 ### Prerequisites
 
