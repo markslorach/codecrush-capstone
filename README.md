@@ -42,3 +42,6 @@ Quiz application with daily coding challenges. Answer questions correctly to bui
    * Run the following command: `npm run dev`
    * This will start the Next.js development server
    * Open your web browser and navigate to `http://localhost:3000` to access the application
+  
+### Screenshots
+![codecrush](https://github.com/markslorach/codecrush-capstone/assets/15185553/3f970b44-2b00-4943-ada5-28a8365b85fc)![codecrush_home_dark](https://github.com/markslorach/codecrush-capstone/assets/15185553/a4810c41-52b9-4816-a8de-3003c0e65270)![codecrush_quiz](https://github.com/markslorach/codecrush-capstone/assets/15185553/cb2b57dc-9ea0-4ea4-9d17-c7253dd3a5de)![codecrush_profile](https://github.com/markslorach/codecrush-capstone/assets/15185553/913a6364-3293-4520-a187-b4e66a57bf3e)![codecrush_leaderboard](https://github.com/markslorach/codecrush-capstone/assets/15185553/12fdf681-9a70-4394-b6cf-d2428b36e285)
